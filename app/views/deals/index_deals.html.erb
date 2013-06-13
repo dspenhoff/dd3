@@ -1,0 +1,70 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<p id="notice_green"><%= flash[:notice] %>&nbsp;</p>
+	<!-- the parameters to control the deals display -->
+	<% form_tag url_for(:controller => 'deals', :action => 'order_deals') do %>
+	<p>
+		Order deals by:<%= radio_button_tag :order_by, 'none', params[:order_by], :checked => true %>None
+		    &nbsp;<%= radio_button_tag :order_by, 'prob', params[:order_by], :checked => false %>Prob
+        &nbsp;<%= radio_button_tag :order_by, 'min', params[:order_by], :checked => false %>Min value
+				&nbsp;<%= radio_button_tag :order_by, 'max', params[:order_by], :checked => false %>Max value
+				&nbsp;<%= radio_button_tag :order_by, 'mode', params[:order_by], :checked => false %>Likely value
+	</p>
+
+  <p>
+		<%= submit_tag "Order Deals" %>
+   	<%= link_to 'New deal', :controller => 'deals', :action => 'order_deals' %> | 
+    <%= link_to 'Generate random deals', :controller => 'deals', :action => 'random' %> |
+    <%= link_to 'Delete random deals', :controller => 'deals', :action => 'delete_random_deals' %>
+	<% end %>
+
+</div>
+
+<!-- show the table only if deals is defined -->
+<% if !defined?(@deals).nil? %>
+
+<table>
+  <tr class="list_table_heading">
+    <th class="list_table_name">Description</th>
+    <th class="list_table_probability">Prob</th>
+    <th class="list_table_amount">Min value</th>
+    <th class="list_table_amount">Likely value</th>
+    <th class="list_table_amount">Max value</th>
+    <th class="list_table_date">Open date</th>
+    <th class="list_table_date">Close date</th>
+    <th class="list_table_date">Actual date</th>
+    <th class="list_table_action">Actions</th>
+  </tr>
+
+<% @deals.each do |deal| %>
+  <tr class="<%= cycle('list_table_row_even', 'list_table_row_odd') %>">
+    <td class="list_table_name"><%=h deal.name %></th>
+    <td class="list_table_probability"><%=h '%.2f' % deal.probability %></td>
+    <td class="list_table_amount"><%=h number_to_currency deal.minimum_value %></td>
+    <td class="list_table_amount"><%=h number_to_currency deal.most_likely_value %></td>
+    <td class="list_table_amount"><%=h number_to_currency deal.maximum_value %></td>
+    <td class="list_table_date"><%=h deal.open_date.strftime('%d %b %Y') %></td>
+    <td class="list_table_date"><%=h deal.expected_close_date.strftime('%d %b %Y') %></td>
+    <td class="list_table_date"><%=h deal.actual_close_date.strftime('%d %b %Y') %></td>
+    <td class="action_links">
+		  <%= link_to 'Show', deal %>
+    	<%= link_to 'Edit', edit_deal_path(deal) %>
+    	<%= link_to 'Destroy', deal, :confirm => 'Are you sure?', :method => :delete %>
+	  </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<p>
+<%= link_to "First page", :controller => 'deals', :action => 'index_first_page' %> |
+<%= link_to "Previous page", :controller => 'deals', :action => 'index_previous_page' %> |
+<%= link_to "Next page", :controller => 'deals', :action => 'index_next_page' %> |
+<%= link_to "Last page", :controller => 'deals', :action => 'index_last_page' %>
+&nbsp;&nbsp; (Showing page <%= @page_num %> of <%= @total_pages %> total pages)
+</p>
+
+<% end %>
+
+

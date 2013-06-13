@@ -1,0 +1,90 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<!-- the parameters to control the deals display -->
+	<!-- note the return action (form_tag_url) is different for the deals and reps controller -->
+	<% 
+	  if @reps_controller
+	    form_tag_url = url_for(:controller => 'reps', :action => 'order_rep_deals', :id => @rep.id)
+	  elsif @regions_controller
+	    form_tag_url = url_for(:controller => 'regions', :action => 'order_region_deals', :id => @region.id)
+	  else
+	    # else must be the deals controller
+	    form_tag_url = url_for(:controller => 'deals', :action => 'order_deals')
+	  end
+	%>  
+	<%= form_tag form_tag_url do %>
+	<p>	
+	  <!-- make the order_by radio button list, checking the button in @order_by -->
+		Order deals by:
+		<% ['none', 'stage', 'most_likely_value', 'is_pipeline'].each do |order_by| %>
+		  &nbsp;&nbsp;<%= radio_button_tag 'order_by', order_by, @order_by == order_by %>&nbsp;<%= order_by.humanize %>
+		<% end %>
+	</p>
+	<p>
+	  <%= submit_tag "Order Deals" %>
+   	<%= link_to 'New deal', :controller => 'deals', :action => 'new' %> 
+   	<% if @deals_controller %> <!-- only show scenario control when controller source is deals -->
+    | <%= link_to 'Generate new scenario', :controller => 'deals', :action => 'scenario' %> 
+    <% end %>
+	</p>
+	<% end %>
+</div>
+
+<!-- show the table only if deals is defined -->
+<% if !defined?(@deals).nil? %>
+<table>
+  <tr class="list_table_heading">
+    <th class="list_table_name">Description</th>
+    <th class="list_table_rep">Rep</th>
+    <th class="list_table_region">Region</th>
+    <th class="list_table_stage">Stage</th>
+    <th class="list_table_amount">Likely value</th>
+    <th class="list_table_amount">Pipeline?</th>
+    <th class="list_table_date">Open date</th>
+    <th class="list_table_date">Close date</th>
+    <th class="list_table_action">Actions</th>
+  </tr>
+
+<% @deals.each do |deal| %>
+  <tr class="<%= cycle('list_table_row_even', 'list_table_row_odd') %>">
+    <td class="list_table_name"><%=h deal.name %></th>
+    <td class="list_table_rep"><%=h deal.rep.name %></th>
+    <td class="list_table_region"><%=h deal.rep.region.name %></th>
+    <td class="list_table_stage"><%=h sfdc_short_stage_name(deal.stage_name) %></td>
+    <td class="list_table_amount"><%=h number_to_currency deal.most_likely_value %></td>
+    <td class="list_table_amount"><%= deal.is_pipeline ? 'Yes' : '' %>
+    <td class="list_table_date"><%=h deal.open_date.strftime('%d %b %Y') %></td>
+    <td class="list_table_date"><%=h deal.actual_close_date.strftime('%d %b %Y') %></td>
+    <td class="action_links">
+		  <%= link_to 'Show deal', deal %>
+	  </td>
+  </tr>
+<% end %>
+<% if !@deals_controller %>
+  <tr>
+    <!-- skip the first 4 columns -->
+    <td colspan="4"></td>
+    <td class="list_table_footing_amount"><%=h number_to_currency total_deals_likely_value(@deals) %></td>
+    <% if @reps_controller %><td class="list_table_footing_amount"><%=h number_to_currency @rep.current_forecast %></td><% end %>
+    <% if @regions_controller %><td class="list_table_footing_amount"><%=h number_to_currency @region.current_forecast %></td><% end %>
+  </tr> 
+<% end %>
+</table>
+
+<br />
+
+<!-- only display the page nav if controller source is deals -->
+<% if @deals_controller %>
+  <p>
+  <%= link_to "First page", :controller => 'deals', :action => 'index_first_page' %> |
+  <%= link_to "Previous page", :controller => 'deals', :action => 'index_previous_page' %> |
+  <%= link_to "Next page", :controller => 'deals', :action => 'index_next_page' %> |
+  <%= link_to "Last page", :controller => 'deals', :action => 'index_last_page' %>
+  &nbsp;&nbsp; (Showing page <%= @page_num %> of <%= @total_pages %> total pages)
+  </p>
+<% end %>
+
+<% end %>
+
+

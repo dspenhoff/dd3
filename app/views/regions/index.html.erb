@@ -1,0 +1,69 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<p id="notice_green"><%= flash[:notice] %>&nbsp;</p>
+	<% form_tag_url = url_for(:controller => 'regions', :action => 'order_regions') %>  
+	<%= form_tag form_tag_url do %>
+	<p>	
+	  <!-- make the order_by radio button list, checking the button in @order_by -->
+		Order regions by:
+		<% ['none', 'num_deals', 'num_forecast', 'pipeline', 'forecast', 'accuracy', 'current_coverage', 'historical_coverage'].each do |order_by| %>
+		  &nbsp;<%= radio_button_tag 'order_by', order_by, @order_by == order_by %><%= order_by.humanize %>
+		<% end %>
+	</p>
+	<p>
+	  <%= submit_tag "Order Regions" %>
+  	<%= link_to 'Create a new region', new_region_path %>
+  <% end %>
+	</p>
+</div>
+
+<div id="data">
+  
+<table>
+  <tr class="list_table_heading">
+    <th class="list_table_name">Region</th>
+    <th class="list_table_number">Num reps</th>
+    <th class="list_table_number">Num deals</th>
+    <th class="list_table_number">Num Pipeline</th>
+    <th class="list_table_amount">Pipeline</th>
+    <th class="list_table_amount">Forecast</th>
+    <th class="list_table_amount">Accuracy</th>
+    <th class="list_table_amount">Coverage</th>
+    <th class="list_table_action">Actions</th>
+  </tr>
+  
+  <% @regions.each do |region| %>
+  <tr class="<%= cycle('list_table_row_even', 'list_table_row_odd') %>">
+    <td class="list_table_name"><%=h region.name %></td>
+    <td class="list_table_number"><%=h region.num_reps %></td>
+    <td class="list_table_number"><%=h region.num_deals %></td>
+    <td class="list_table_number"><%=h region.num_pipeline %></td>
+    <td class="list_table_amount"><%=h number_to_currency region.current_pipeline, :precision => 0 %></td>
+    <td class="list_table_amount"><%=h number_to_currency region.current_forecast, :precision => 0 %></td>
+    <td class="list_table_amount"><%=h number_to_percentage 100 * region.forecast_accuracy, :precision => 0 %></td>
+    <td class="list_table_amount">
+      <%=h number_to_percentage 100 * region.current_forecast_coverage, :precision => 0 %>
+       / <%=h number_to_percentage 100 * region.forecast_coverage, :precision => 0 %>
+    </td>
+    <td class="region_action_links">
+      <%= link_to 'Show region', region %>
+      &nbsp;<%= link_to 'Show reps', :action => 'show_associated_reps', :id => region.id %>
+      &nbsp;<%= link_to 'Show deals', :action => 'show_associated_deals', :id => region.id %>
+	  </td>
+  </tr>
+  <% end %>
+  <tr>
+    <!-- skip the first column -->
+    <td colspan="1"></td>
+    <td class="list_table_footing_number"><%=h total_region_num_reps(@regions) %></td>
+    <td class="list_table_footing_number"><%=h total_region_num_deals(@regions) %></td>
+    <td class="list_table_footing_number"><%=h total_region_num_pipeline(@regions) %></td>
+    <td class="list_table_footing_amount"><%=h number_to_currency total_region_pipeline(@regions), :precision => 0 %></td>
+    <td class="list_table_footing_amount"><%=h number_to_currency total_region_forecast(@regions), :precision => 0 %></td>
+  </tr>
+</table>
+<% if @regions.length == 0 %>
+	<p class="no_records">There are no region records to display</p>	
+<% end %>
+</div>

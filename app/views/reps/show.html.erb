@@ -1,0 +1,91 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<h3>Showing rep: <%= @rep.name %></h3>
+	<p>	</p>
+	<p>	</p>
+</div>
+
+<p>
+  <%= link_to 'Show history', :controller => 'reps', :action => 'show_associated_histories', :id => @rep.id %>
+  | <%= link_to 'Show deals', :controller => 'reps', :action => 'show_associated_deals', :id => @rep.id %>
+  | <%= link_to 'Show region', :controller => 'regions', :action => 'show', :id => @rep.region.id %>
+  | <%= link_to 'Edit', edit_rep_path(@rep) %>
+  | <%= link_to 'Delete', @rep, :confirm => 'Are you sure?', :method => :delete %>
+</p>
+
+<table>
+  <tr>
+    <td class="view_table_name">Name</td>
+    <td class="view_table_data"><%=h @rep.name %></td>
+  </tr>
+  <tr>
+    <td class="view_table_name">Region</td>
+    <td class="view_table_data"><%=h @rep.region.name %></td>
+  </tr>
+  <tr>
+    <td class="view_table_name">Deals open</td>
+    <td class="view_table_data"><%=h @rep.num_deals %></td>
+  </tr>
+
+  <!-- summarize the pipeline -->
+  <tr>
+    <td class="view_table_name">Pipeline</td>
+    <td class="view_table_data_medium"><%=h number_to_currency @rep.current_pipeline, :precision => 0 %></td>
+    <td class="view_table_name">Deals in pipeline</td>
+    <td class="view_table_data_short"><%=h @rep.num_pipeline %></td>
+    <td class="view_table_name">Historical coverage</td>
+    <td class="view_table_data_short"><%=h number_to_percentage 100 * @rep.forecast_coverage, :precision => 0 %></td>
+  </tr>
+
+  <!-- summarize the forecast -->
+  <tr>
+    <td class="view_table_name">Forecast</td>
+    <td class="view_table_data_medium"><%=h number_to_currency @rep.current_forecast, :precision => 0 %></td>
+    <td class="view_table_name">Deals in forecast</td>
+    <td class="view_table_data_short"><%=h @rep.num_forecast %></td>
+    <td class="view_table_name">Historical accuracy</td>
+    <td class="view_table_data_short"><%=h number_to_percentage 100 * @rep.forecast_accuracy, :precision => 0 %></td>
+  </tr>
+
+  <!-- current forecast coverage -->
+  <tr>
+    <td class="view_table_name">Coverage </td>
+    <td class="view_table_data_medium"><%=h number_to_percentage 100 * @rep.current_forecast_coverage, :precision => 0 %></td>
+  </tr>
+  
+  <% if @rep.num_deals != 0 then %>
+  <!-- exclude the rest of the summary if the rep has no deals -->
+  
+  <% if @rep.histories.length != 0 %>
+  <!-- skip the predictions if rep has no histories -->
+  
+  <!-- the predictions -->
+  <tr>
+    <td class="view_table_name">Theta</td>
+    <td class="view_table_data_medium"><%= @rep.amount_predicted_regression(:forecast_and_pipeline)[:theta].round %>&deg;</td>
+  </tr>
+  <tr>
+    <td class="view_table_name">Predicted - regression </td>
+    <td class="view_table_data_medium"><%=h number_to_currency @rep.amount_predicted_regression(:forecast_and_pipeline)[:value], :precision => 0 %></td>
+  </tr>
+  <tr>
+    <td class="view_table_name">Predicted - accuracy</td>
+    <td class="view_table_data_medium"><%=h number_to_currency @rep.amount_predicted_average, :precision => 0 %></td>
+  </tr>
+  <% end %>
+  
+  <!-- the simulation -->
+  <tr>
+    <td class="view_table_name">Simulated - 90%</td>
+    <td class="view_table_data_medium"><%=h number_to_currency @sim.p_90, :precision => 0 %></td>
+  </tr> 
+  
+  <% end %> 
+  
+</table>
+
+<p>
+  <%= link_to 'Back', reps_path %>
+  | <%= link_to 'Create new rep', new_rep_path %>
+</p>

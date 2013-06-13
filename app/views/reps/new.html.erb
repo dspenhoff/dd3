@@ -1,0 +1,28 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<p>New rep</p>
+	<p>	</p>
+	<p>	</p>
+</div>
+
+<%= form_for(@rep) do |f| %>
+  <%= f.error_messages %>
+
+  <table>
+    <tr>
+      <td class = "view_table_name">Name</td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td class = "view_table_name">Rep</td>
+      <td><%= f.collection_select :region_id, @regions, :id, :name %> </td>
+    </tr>
+  </table>
+  
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', reps_path %>

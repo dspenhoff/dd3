@@ -1,0 +1,61 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title><%= @page_title %></title>
+  <%= stylesheet_link_tag 'application', :media => 'screen' %>
+  <!--<%= javascript_include_tag :defaults %>-->
+</head>
+<body>
+
+<!-- header starts here -->
+<div id="header">
+  <!-- title starts here -->
+	<div id="title">
+		<h1>DD3: Sales Forecast Analytics+Risk Analysis</h1>
+	</div>
+	<!-- title ends here -->
+	
+	<!-- menu starts here -->
+	<div id="menu">
+	  <ul> 
+  		<li><%= link_to 'Home', root_path %></li>
+  		<li><%= link_to 'Deals', deals_path %></li>
+  		<li><%= link_to 'Reps', reps_path %></li>
+  		<li><%= link_to 'Regions', regions_path %></li>
+  		<li><%= link_to 'Analytics', analytics_path %></li>
+    </ul>
+	</div>
+  <!-- menu ends here -->
+    
+  <!-- the page location tracking 'breadcrumb' -->
+  <div id="breadcrumb"><%= @page_title %></div>
+  
+</div>
+<!-- end of header -->	
+
+<!-- the flash notice /alert -->
+<% if flash[:notice] then %>
+<br />
+<p id="notice_red">Notice: <%= flash[:notice] %><p>
+<% end %>
+
+
+	<!-- content from application views -->
+	<%= yield %>
+
+	<!-- footer -->
+	<div id="footer">
+		<br />
+	  <hr />
+		<p>
+			&copy; Copyright 2012&ndash;2013 <a href="http://www.davidspenhoff.com">David Spenhoff</a>. All rights reserved. 
+		</p>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<h3>Showing rep history for <%= @rep.name %></h3>
+
+	<p>
+	  <%= link_to 'Show rep ', :controller => 'reps', :action => 'show', :id => @rep.id %>
+	  | <%= link_to 'Chart history', :controller => 'analytics', :action => 'chart_achieved_vs_forecast', 
+	          :filter_avf_by => 'show_rep', :rep_select => {:id => @rep.id} %>
+	  | <%= link_to 'Show deals for this rep ', :controller => 'reps', :action => 'show_associated_deals', :id => @rep.id %>
+  </p>
+
+</div>
+
+<table>
+	<tr class="list_table_heading">
+		<th class="list_table_date">Date</th>
+		<th class="list_table_amount">Actual amount</th>
+		<th class="list_table_amount">Forecast amount</th>
+		<th class="list_table_amount">Pipeline amount</th>
+		<th class="list_table_amount">Forecast accuracy</th>
+		<th class="list_table_amount">Pipeline coverage</th>
+	</tr>
+	<% @histories.each do |history| %>
+	<tr class="<%= cycle('list_table_row_even', 'list_table_row_odd') %>">
+		<td class="list_table_date"><%=h history.date.strftime('%d %b %Y') %></td>
+		<td class="list_table_amount"><%=h number_to_currency history.amount_achieved, :precision => 0 %></td>
+		<td class="list_table_amount"><%=h number_to_currency history.amount_forecast, :precision => 0 %></td>
+		<td class="list_table_amount"><%=h number_to_currency history.amount_pipeline, :precision => 0 %></td>
+		<td class="list_table_amount"><%=h number_to_percentage 100 * history.forecast_accuracy, :precision => 0 %></td>
+		<td class="list_table_amount"><%=h number_to_percentage 100 * history.forecast_coverage, :precision => 0 %></td>
+	</tr>
+	<% end %>
+  <tr>
+    <!-- skip the first 1 columns -->
+    <td colspan="1"></td>
+    <td class="list_table_footing_amount"><%=h number_to_currency @rep.sum_achieved_history, :precision => 0 %></td>
+    <td class="list_table_footing_amount"><%=h number_to_currency @rep.sum_forecast_history, :precision => 0 %></td>
+    <td class="list_table_footing_amount"><%=h number_to_currency @rep.sum_pipeline_history, :precision => 0 %></td>
+    <td class="list_table_footing_amount"><%=h number_to_percentage 100 * @rep.forecast_accuracy, :precision => 0 %></td>
+    <td class="list_table_footing_amount"><%=h number_to_percentage 100 * @rep.forecast_coverage, :precision => 0 %></td>
+  </tr>
+</table>
+
+<p>
+  <%= link_to 'Back', reps_path %>
+</p>

@@ -1,0 +1,65 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<p id="notice_green"><%= flash[:notice] %>&nbsp;</p>
+	<% form_tag_url = url_for(:controller => 'reps', :action => 'order_reps') %>  
+	<%= form_tag form_tag_url do %>
+	<p>	
+	  <!-- make the order_by radio button list, checking the button in @order_by -->
+		Order reps by:
+		<% ['none', 'num_deals', 'num_forecast', 'pipeline', 'forecast', 'accuracy', 'rank'].each do |order_by| %>
+		  &nbsp;&nbsp;<%= radio_button_tag 'order_by', order_by, @order_by == order_by %><%= order_by.humanize %>
+		<% end %>
+	</p>
+	<p>
+	  <%= submit_tag 'Order reps' %>
+  	<%= link_to 'Create a new rep', new_rep_path %>
+  <% end %>
+	</p>
+</div>
+
+<div id="data">
+  
+<table>
+  <tr class="list_table_heading">
+    <th class="list_table_name">Name</th>
+    <th class="list_table_name">Region</th>
+		<th class="list_table_number">Num deals</th>
+		<th class="list_table_number">Num forecast</th>
+		<th class="list_table_amount">Pipeline</th>
+    <th class="list_table_amount">Forecast</th>
+		<th class="list_table_amount">Accuracy</th>
+    <th class="list_table_action">Actions</th>
+  </tr>
+
+  <% @reps.each do |rep| %>
+  <tr class="<%= cycle('list_table_row_even', 'list_table_row_odd') %>">
+    <td class="list_table_name"><%=h rep.name %></td>
+    <td class="list_table_name"><%=h rep.region.name %>
+  	<td class="list_table_number"><%=h rep.num_deals %>
+	  <td class="list_table_number"><%=h rep.num_forecast %>
+		<td class="list_table_amount"><%=h number_to_currency rep.current_pipeline, :precision => 0 %></td>
+    <td class="list_table_amount"><%=h number_to_currency rep.current_forecast, :precision => 0 %></td>
+ 		<td class="list_table_amount"><%=h number_to_percentage 100 * rep.forecast_accuracy, :precision => 0 %></td>
+    <td class="region_action_links">
+      <%= link_to 'Show rep', rep %>
+      &nbsp;<%= link_to 'Show deals', { :controller => 'reps', :action => 'show_associated_deals', :id => rep.id } %>
+      &nbsp;<%= link_to 'Show history', :controller => 'reps', :action => 'show_associated_histories', :id => rep.id %>
+		</td>
+  </tr>
+  <% end %>
+  <tr>
+    <!-- skip the first 2 columns -->
+    <td colspan="2"></td>
+    <td class="list_table_footing_number"><%=h total_rep_num_deals(@reps) %></td>
+    <td class="list_table_footing_number"><%=h total_rep_num_deals_forecast(@reps) %></td>
+    <td class="list_table_footing_amount"><%=h number_to_currency total_rep_pipeline(@reps), :precision => 0 %></td>
+    <td class="list_table_footing_amount"><%=h number_to_currency total_rep_forecast(@reps) , :precision => 0 %></td>
+    <td class="list_table_footing_amount"><%=h number_to_percentage 100 * average_rep_forecast_accuracy(@reps), :precision => 0 %></td>
+  </tr>
+</table>
+
+<% if @reps.length == 0 %>
+	<p class="no_records">There are no rep records to display</p>	
+<% end %>
+</div>

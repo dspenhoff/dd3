@@ -1,0 +1,86 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<h3>Showing region: <%= @region.name %></h3>
+	<p>	</p>
+	<p>	</p>
+</div>
+
+<div id="data">
+  
+<p>
+  <%= link_to 'Show reps', :action => 'show_associated_reps', :id => @region.id %>
+  | <%= link_to 'Show deals', :action => 'show_associated_deals', :id => @region.id %>
+  | <%= link_to 'Chart history', :controller => 'analytics', :action => 'chart_achieved_vs_forecast', 
+          :filter_avf_by => 'show_region', :region_select => {:id => @region.id} %>
+  | <%= link_to 'Edit', edit_region_path(@region) %>
+  | <%= link_to 'Delete', @region, :confirm => 'Are you sure?', :method => :delete %>
+</p>
+
+<table>
+  
+  <tr>
+    <td class="view_table_name">Name</td>
+    <td class="view_table_data"><%=h @region.name %></td>
+  </tr>
+  
+  <tr>
+    <td class="view_table_name">Reps in region</td>
+    <td class="view_table_data"><%=h @region.num_reps %></td>
+  </tr>
+
+  <tr>
+    <td class="view_table_name">Deals open</td>
+    <td class="view_table_data"><%=h @region.num_deals %></td>
+  </tr>
+  
+  <!-- summarize the pipeline -->
+  <tr>
+    <td class="view_table_name">Pipeline</td>
+    <td class="view_table_data_medium"><%=h number_to_currency @region.current_pipeline, :precision => 0 %></td>
+    <td class="view_table_name">Deals in pipeline</td>
+    <td class="view_table_data_short"><%=h @region.num_pipeline %></td>
+    <td class="view_table_name">Historical coverage</td>
+    <td class="view_table_data_short"><%=h number_to_percentage 100 * @region.forecast_coverage, :precision => 0 %></td>
+  </tr>
+  
+  <!-- summarize the forecast -->
+  <tr>
+    <td class="view_table_name">Forecast</td>
+    <td class="view_table_data_medium"><%=h number_to_currency @region.current_forecast, :precision => 0 %></td>
+    <td class="view_table_name">Deals in forecast</td>
+    <td class="view_table_data_short"><%=h @region.num_forecast %></td>
+    <td class="view_table_name">Historical accuracy</td>
+    <td class="view_table_data_short"><%=h number_to_percentage 100 * @region.forecast_accuracy, :precision => 0 %></td>
+  </tr>
+    
+  <!-- current forecast coverage -->
+  <tr>
+    <td class="view_table_name">Coverage </td>
+    <td class="view_table_data_medium"><%=h number_to_percentage 100 * @region.current_forecast_coverage, :precision => 0 %></td>
+  </tr>
+  
+  <!-- the predictions -->
+  <tr>
+    <td class="view_table_name">Predicted - regression </td>
+    <td class="view_table_data_medium"><%=h number_to_currency @region.amount_predicted_regression, :precision => 0 %></td>
+  </tr>
+  <tr>
+    <td class="view_table_name">Predicted - accuracy</td>
+    <td class="view_table_data_medium"><%=h number_to_currency @region.amount_predicted_average, :precision => 0 %></td>
+  </tr>
+  
+  <!-- the simulation -->
+  <tr>
+    <td class="view_table_name">Simulated - 90%</td>
+    <td class="view_table_data_medium"><%=h number_to_currency @sim.p_90, :precision => 0 %></td>
+  </tr>
+
+</table>
+
+<p>
+  <%= link_to 'Back', regions_path %>
+  | <%= link_to 'Create new region' %>
+</p>
+
+</div

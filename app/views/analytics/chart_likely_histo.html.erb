@@ -1,0 +1,19 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<h3>
+		Histogram (frequency distribution) of deal most likely values
+	</h3>
+
+	<p>
+		<%= link_to 'View analytics functions list', :controller => 'analytics', :action => 'index' %> |
+		<%= link_to 'Show deals', :controller => 'deals', :action => 'index' %> |
+	</p>
+</div>
+
+<div id="chart">
+  <%= image_tag @mlv_histo_vis %>
+</div>
+
+
+

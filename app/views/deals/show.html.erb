@@ -1,0 +1,78 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<p id="notice_green"><%= flash[:notice] %>&nbsp;</p>
+	<p>	</p>
+	<p>	</p>
+</div>
+
+<p>
+  <%= link_to 'Show rep', :controller => 'reps', :action => 'show', :id => @deal.rep.id %>
+  | <%= link_to 'Show region', :controller => 'regions', :action => 'show', :id => @deal.rep.region.id %>
+  | <%= link_to 'Edit', edit_deal_path(@deal) %>
+  | <%= link_to 'Delete', @deal, :confirm => 'Are you sure?', :method => :delete %>
+</p>
+
+<table>
+  <tr>
+    <td class="view_table_name">Description</td>
+    <td class="view_table_data"><%=h @deal.name %></td>
+  </tr>
+  <tr>
+    <td class="view_table_name">Rep</td>
+    <td class="view_table_data"><%=h @deal.rep.name %></td>
+  </tr>
+  <tr>
+    <td class="view_table_name">Region</td>
+    <td class="view_table_data"><%=h @deal.rep.region.name %></td>
+  </tr>
+  <tr>
+    <td class="view_table_name">Stage</td>
+    <td class="view_table_data"><%=h @deal.stage_name %></td>
+  </tr>  <tr>
+    <td class="view_table_name">Probability</td>
+    <td class="view_table_data"><%=h '%.2f' % @deal.probability %></td>
+  </tr>
+  <tr>
+    <td class="view_table_name">Forecast?</td>
+    <td class="view_table_data"><%=h @deal.is_forecast ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+    <td class="view_table_name">Pipeline?</td>
+    <td class="view_table_data"><%=h @deal.is_pipeline ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+    <td class="view_table_name">Minimum value</td>
+    <td class="view_table_data"><%=h number_to_currency @deal.minimum_value %></td>
+  </tr>
+
+  <tr>
+    <td class="view_table_name">Most likely value</td>
+    <td class="view_table_data"><%=h number_to_currency @deal.most_likely_value %></td>
+  </tr>
+
+  <tr>
+    <td class="view_table_name">Maximum value</td>
+    <td class="view_table_data"><%=h number_to_currency @deal.maximum_value %></td>
+  </tr>
+
+  <tr>
+    <td class="view_table_name">Open date</td>
+    <td class="view_table_data"><%=h @deal.open_date.strftime('%d %b %Y') %></td>
+  </tr>
+
+  <tr>
+    <td class="view_table_name">Expected close date</td>
+    <td class="view_table_data"><%=h @deal.expected_close_date.strftime('%d %b %Y') %></td>
+  </tr>
+
+  <tr>
+    <td class="view_table_name">Actual close date</td>
+    <td class="view_table_data"><%=h @deal.actual_close_date.strftime('%d %b %Y') %></td>
+  </tr>
+</table>
+
+<p>
+<%= link_to 'Back', deals_path %>
+  | <%= link_to 'New deal', new_deal_path %>
+</p>

@@ -1,0 +1,73 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<p>Create a new deal</p>
+	<p>	</p>
+	<p>	</p>
+</div>
+
+<%= form_for(@deal) do |f| %>
+
+<div id="data"> 
+  <p class="error"><%= error_messages_for 'deal' %></p>
+  <table>
+<!--
+  <p>
+    <%= f.label :customer_id %><br />
+    <%= f.text_field :customer_id %>
+  </p>
+-->
+    <tr>
+      <td class="view_table_name">Description</td>
+      <td><%= f.text_field :name %></td>
+    </tr>  
+    <tr>
+      <td class = "view_table_name">Rep</td>
+      <td><%= f.collection_select :rep_id, @reps, :id, :name, :include_blank => true %> 
+    </tr>
+    <tr>
+      <td class="view_table_name">Stage</td>
+      <td><%= f.select :stage_name, @stages, :include_blank => true %></td>
+    </tr>  
+    <tr>
+      <td class = "view_table_name">Forecast?</td>
+      <td><%= f.select :is_forecast, [['No', false], ['Yes', true]] %></td>
+    </tr>
+    <tr>
+      <td class = "view_table_name">Pipeline?</td>
+      <td><%= f.select :is_pipeline, [['No', false], ['Yes', true]] %></td>
+    </tr>
+    <tr>
+      <td class="view_table_name">Minimum value</td>
+      <td><%= f.text_field :minimum_value %></td>
+    </tr>  
+    <tr>
+      <td class="view_table_name">Most likely value</td>
+      <td><%= f.text_field :most_likely_value %></td>
+    </tr>  
+    <tr>
+      <td class="view_table_name">Maximum value</td>
+      <td><%= f.text_field :maximum_value %></td>
+    </tr>  
+    <tr>
+      <td class="view_table_name">Open date</td>
+      <td><%= f.date_select :open_date %></td>
+    </tr>  
+    <tr>
+      <td class="view_table_name">Expected close date</td>
+      <td><%= f.date_select :expected_close_date %></td>
+    </tr>  
+    <tr>
+      <td class="view_table_name">Actual close date</td>
+      <td><%= f.date_select :actual_close_date %></td>
+    </tr>
+  </table>
+    
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', deals_path %>
+
+</div>

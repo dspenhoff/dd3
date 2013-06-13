@@ -1,0 +1,44 @@
+    customers GET    /customers(.:format)          customers#index
+              POST   /customers(.:format)          customers#create
+ new_customer GET    /customers/new(.:format)      customers#new
+edit_customer GET    /customers/:id/edit(.:format) customers#edit
+     customer GET    /customers/:id(.:format)      customers#show
+              PUT    /customers/:id(.:format)      customers#update
+              DELETE /customers/:id(.:format)      customers#destroy
+    histories GET    /histories(.:format)          histories#index
+              POST   /histories(.:format)          histories#create
+  new_history GET    /histories/new(.:format)      histories#new
+ edit_history GET    /histories/:id/edit(.:format) histories#edit
+      history GET    /histories/:id(.:format)      histories#show
+              PUT    /histories/:id(.:format)      histories#update
+              DELETE /histories/:id(.:format)      histories#destroy
+    analytics GET    /analytics(.:format)          analytics#index
+              POST   /analytics(.:format)          analytics#create
+ new_analytic GET    /analytics/new(.:format)      analytics#new
+edit_analytic GET    /analytics/:id/edit(.:format) analytics#edit
+     analytic GET    /analytics/:id(.:format)      analytics#show
+              PUT    /analytics/:id(.:format)      analytics#update
+              DELETE /analytics/:id(.:format)      analytics#destroy
+      regions GET    /regions(.:format)            regions#index
+              POST   /regions(.:format)            regions#create
+   new_region GET    /regions/new(.:format)        regions#new
+  edit_region GET    /regions/:id/edit(.:format)   regions#edit
+       region GET    /regions/:id(.:format)        regions#show
+              PUT    /regions/:id(.:format)        regions#update
+              DELETE /regions/:id(.:format)        regions#destroy
+         reps GET    /reps(.:format)               reps#index
+              POST   /reps(.:format)               reps#create
+      new_rep GET    /reps/new(.:format)           reps#new
+     edit_rep GET    /reps/:id/edit(.:format)      reps#edit
+          rep GET    /reps/:id(.:format)           reps#show
+              PUT    /reps/:id(.:format)           reps#update
+              DELETE /reps/:id(.:format)           reps#destroy
+        deals GET    /deals(.:format)              deals#index {:collection=>{:scenario=>:get, :delete_random_deals=>:get, :index_first_page=>:get, :index_last_page=>:get, :index_previous_page=>:get, :index_next_page=>:get, :order_deals=>:get, :index_deals=>:get}}
+              POST   /deals(.:format)              deals#create {:collection=>{:scenario=>:get, :delete_random_deals=>:get, :index_first_page=>:get, :index_last_page=>:get, :index_previous_page=>:get, :index_next_page=>:get, :order_deals=>:get, :index_deals=>:get}}
+     new_deal GET    /deals/new(.:format)          deals#new {:collection=>{:scenario=>:get, :delete_random_deals=>:get, :index_first_page=>:get, :index_last_page=>:get, :index_previous_page=>:get, :index_next_page=>:get, :order_deals=>:get, :index_deals=>:get}}
+    edit_deal GET    /deals/:id/edit(.:format)     deals#edit {:collection=>{:scenario=>:get, :delete_random_deals=>:get, :index_first_page=>:get, :index_last_page=>:get, :index_previous_page=>:get, :index_next_page=>:get, :order_deals=>:get, :index_deals=>:get}}
+         deal GET    /deals/:id(.:format)          deals#show {:collection=>{:scenario=>:get, :delete_random_deals=>:get, :index_first_page=>:get, :index_last_page=>:get, :index_previous_page=>:get, :index_next_page=>:get, :order_deals=>:get, :index_deals=>:get}}
+              PUT    /deals/:id(.:format)          deals#update {:collection=>{:scenario=>:get, :delete_random_deals=>:get, :index_first_page=>:get, :index_last_page=>:get, :index_previous_page=>:get, :index_next_page=>:get, :order_deals=>:get, :index_deals=>:get}}
+              DELETE /deals/:id(.:format)          deals#destroy {:collection=>{:scenario=>:get, :delete_random_deals=>:get, :index_first_page=>:get, :index_last_page=>:get, :index_previous_page=>:get, :index_next_page=>:get, :order_deals=>:get, :index_deals=>:get}}
+   home_index GET    /home/index(.:format)         home#index
+         root        /                             home#index

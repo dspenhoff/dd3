@@ -1,0 +1,73 @@
+<div id="selector">
+	<p><span style="font-weight:bold;">Risk analysis parameters</span></p>
+	<!-- the parameters to control the simulation function -->
+	<%= form_tag url_for(:controller => 'analytics', :action => 'simulate_deals') do %>
+	
+	<p>Deal scope?
+  	&nbsp;<%= radio_button_tag :deal_scope, 'all', params[:all], :checked => true %>All reps and regions
+  	&nbsp;<%= radio_button_tag :deal_scope, 'rep', params[:rep], :checked => false %>Rep only
+    &nbsp;<%= collection_select :rep_scope, :rep_id, @reps, :id, :name %>
+  	&nbsp;<%= radio_button_tag :deal_scope, 'region', params[:region], :checked => false %>Region only
+    &nbsp;<%= collection_select :region_scope, :region_id, @regions, :id, :name %> 
+  </p>
+  	
+	<p>Forecast scope?
+  	&nbsp;<%= radio_button_tag :forecast_scope, 'all', params[:all_deals], :checked => true %>All deals
+  	&nbsp;<%= radio_button_tag :forecast_scope, 'forecast', params[:forecast_deals], :checked => false %>Forecast deals only
+
+  </p>
+  
+	<p>Deal objective?
+		&nbsp;<%= radio_button_tag :deal_objective, 'mode', params[:use_mode_objective], :checked => true %>Most likely
+		&nbsp;<%= radio_button_tag :deal_objective, 'dist', params[:use_dist_objective], :checked => false %>Distribution
+    &nbsp;<%= radio_button_tag :deal_objective, 'min', params[:use_min_objective], :checked => false %>Min
+		&nbsp;<%= radio_button_tag :deal_objective, 'max', params[:use_max_objective], :checked => false %>Max
+		&nbsp;<%= radio_button_tag :deal_objective, 'mean', params[:use_mean_objective], :checked => false %>Mean
+	</p>
+	
+	<p>Deal win probabilities?
+	  &nbsp;<%= radio_button_tag :deal_probability, 'given', params[:use_given_probability], :checked => true %>Given
+    &nbsp;<%= radio_button_tag :deal_probability, 'set', params[:use_set_probability], :checked => false %>Set
+		&nbsp;<%= radio_button_tag :deal_probability, 'scaled', params[:use_scaled_probability], :checked => false %>Scaled				
+		&nbsp;<%= radio_button_tag :deal_probability, 'accuracy', params[:use_accuracy_probability], :checked => false %>Rep accuracy				
+		&nbsp;<%= radio_button_tag :deal_probability, 'predict', params[:use_predict_probability], :checked => false %>Rep prediction				
+	</p>
+	
+	<p>
+	  Win probability limit (>=)? <%= text_field_tag :limit_probability, params[:limit_probability], :size => 8 %>
+	  &nbsp;&nbsp;Set (fixed) win probability? <%= text_field_tag :set_probability, params[:set_probability], :size => 8 %>	
+	  &nbsp;&nbsp;Win probabilities scale factor? <%= text_field_tag :scaled_probability, params[:scaled_probability], :size => 8 %>
+	</p>
+	
+	<p>
+	  Set target forecast? <%= text_field_tag :target_forecast, params[:target_forecast], :size => 8 %>
+	  &nbsp;&nbsp;
+	  Set target forecast range: Min (>=)? <%= text_field_tag :min_forecast, params[:min_forecast], :size => 8 %>
+	  Max (<=)? <%= text_field_tag :max_forecast, params[:max_forecast], :size => 8 %>	  	
+	</p> 
+
+	<p>
+	  Scale all deal values? <%= text_field_tag :scale_values, params[:scale_values], :size => 8 %>
+    &nbsp;&nbsp; Multiply all deal values by the amount entered. Leave blank for no scaling.
+	</p>
+	
+  <p>
+		<%= submit_tag "Simulate Now" %>
+		<%= link_to 'View analytics functions list', :controller => 'analytics', :action => 'index'  %> |
+		<%= link_to 'Cancel', :controller => 'analytics', :action => 'index' %> 
+	<% end %>
+	</p>
+</div>
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<div class="notes">
+  <p>Notes:</p>
+  <ul>
+    <li>These parameters may be used in combination, for example decrease all win probabilities by 10% and model the forecast risk based on the most likely deal value.</li>
+    <li>There are certain restrictions on setting parameters. For example, win probabilities cannot be more than 100%. Another example is that the relationship among the minimum, most likely and maximum deal values is that 1) minimum &lt;= most likely and 2) most likely &lt;= maximum.</li> 
+    <li>If target forecast is set, the analysis will calculate the probability of meeting or exceeding that specific value.</li>
+    <li>If the target forecast range values are set, the analysis will calculate the probability that the actual total sales value is between Min and Max. If Min is left blank, zero will be assumed. If Max is left blank, the largest possible sales value will be assumed. It is not necessary that the target forecast value, if set, be in the range for this calculation.</li>
+  </ul>
+</div>  
+
+

@@ -1,0 +1,35 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<p>Editing rep</p>
+	<p>	</p>
+	<p>	</p>
+</div>
+
+<%= form_for(@rep) do |f| %>
+  <%= f.error_messages %>
+  
+  <table>
+    <tr>
+      <td class = "view_table_name">Name</td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td class = "view_table_name">Region</td>
+      <td><%= f.collection_select :region_id, @regions, :id, :name %> </td>
+    </tr>
+    <tr>
+      <td class = "view_table_name">Current_forecast</td>
+      <td><%= f.text_field :current_forecast %> </td>
+    </tr>
+  </table>
+  
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<p>
+  <%= link_to 'Show', @rep %> |
+  <%= link_to 'Back', reps_path %>
+</p>

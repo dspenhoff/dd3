@@ -1,0 +1,21 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<h3>
+		Chart of simulation sample distribution (<span style="color:#ff6633;">orange</span>) and 
+		cumulative distribution (<span style="color:#3366ff;">blue</span>) <br />with 
+		sample mean (<span style="color:#009900;">green</span>) and median (<span style="color:#990000;">red</span>) 
+		<!-- deleteing most likely/mode - ambiguous and potentially misleading
+		and most likely (<span style="color:#330066;">purple</span>) values
+		-->
+	</h3>
+
+	<p>
+		<%= link_to 'View analytics functions list', :controller => 'analytics', :action => 'index' %> |
+		<%= link_to 'Show deals', :controller => 'deals', :action => 'index' %> |
+	</p>
+</div>
+
+<div id="chart">
+  <%= image_tag @pf_vis %>
+</div>

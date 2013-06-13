@@ -1,0 +1,57 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<p> </p>
+
+</div>
+
+<div style="width:700px;">
+  
+<table>
+	<tr><th class="list_table_heading" style="width:700px; text-align:left; padding-left:5px;">Select an Analytics function</th></tr>
+</table>
+
+<h4>Summaries</h4>
+<p>
+	<% summarize_deals_url = url_for(:controller => 'analytics', :action => 'summarize_deals') %>
+	<%= link_to 'Summarize deals', summarize_deals_url %> &nbsp;&nbsp;|&nbsp; See a summary of details and basic statistics for the defined deals.                                                                
+</p> 
+<p>
+	<% summarize_reps_url = url_for(:controller => 'analytics', :action => 'summarize_all_reps') %>
+	<%= link_to 'Summarize deals by rep', summarize_reps_url %> &nbsp;&nbsp;|&nbsp; See a rep-by-rep summary of deals.                                                                
+</p>
+<p>
+	<% summarize_regions_url = url_for(:controller => 'analytics', :action => 'summarize_all_regions') %>
+	<%= link_to 'Summarize deals by region', summarize_regions_url %> &nbsp;&nbsp;|&nbsp; See a region-by-region summary deals.                                                                
+</p>
+
+<h4>Simulations</h4>
+<p>
+	<% simulate_parameters_url = url_for(:controller => 'analytics', :action => 'simulate_parameters') %>
+	<%= link_to 'Simulate deals', simulate_parameters_url %> &nbsp;&nbsp;|&nbsp; See detailed outcome probabilities and 
+	  statistics produced using a technique called 'monte carlo simulation' which is used to analyze
+		scenarios where there is uncertainty about possible results.
+</p>
+
+<h4>Charts</strong></h4>
+<p>
+  <% chart_likely_histo_url = url_for(:controller => :analytics, :action => 'chart_likely_histo')%>
+  <%= link_to 'Chart most likely values', chart_likely_histo_url %> &nbsp;&nbsp;|&nbsp; View a histogram
+    showing the distribution of deal most likely values.
+</p>
+<p>
+  <% chart_prob_histo_url = url_for(:controller => :analytics, :action => 'chart_prob_histo')%>
+  <%= link_to 'Chart stages/win probabilities', chart_prob_histo_url %> &nbsp;&nbsp;|&nbsp; View a histogram
+    showing the distribution of deal stages (win probabilities).
+</p>
+<p>
+  <% chart_avx_url = url_for(:controller => :analytics, :action => 'chart_achieved_vs_x', :filter_avx_by => 'show_all', :aggregate_histories => '1', :avx_type => :forecast )%>
+  <%= link_to 'Chart achieved results vs. forecast', chart_avx_url %> &nbsp;&nbsp;|&nbsp; View a plot of 
+		achieved results vs. forecasts.
+</p>
+<p>
+  <% chart_avx_url = url_for(:controller => :analytics, :action => 'chart_achieved_vs_x', :filter_avx_by => 'show_all', :aggregate_histories => '1', :avx_type => :pipeline )%>
+  <%= link_to 'Chart achieved results vs. pipeline', chart_avx_url %> &nbsp;&nbsp;|&nbsp; View a plot of 
+		achieved results vs. pipelines.
+</p>
+</div>

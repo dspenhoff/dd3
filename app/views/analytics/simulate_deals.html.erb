@@ -1,0 +1,125 @@
+<div>
+	<p>
+		<%= link_to 'View analytics list', :controller => 'analytics', :action => 'index' %> |
+		<%= link_to 'Show deals', :controller => 'deals', :action => 'index' %> |
+	</p>
+</div>
+
+<!-- # write the table only if sim status is ok -->
+<% if @sim.status == "ok" %>  
+
+<table>
+  <tr>
+    <th class="analytics_table_header_name">Simulation results for <%= @sim.selected_count %> of <%= @deals.length %> deals</th>
+    <th class="analytics_table_header_data">Simulated</th>
+  </tr>
+
+	<tr>
+  	<td class="analytics_table_name">Expected (mean) total value</td>
+  	<td class="analytics_table_data"><%=  number_to_currency @sim.mean %></td>
+  	<td class="analytics_table_note_short">&nbsp;<%=h number_to_percentage 100 * @sim.mean / @sim.mean, :precision => 0 %></td>
+  </tr>
+
+	<tr>
+  	<td class="analytics_table_name">Standard deviation (from mean)</td>
+  	<td class="analytics_table_data"><%=  number_to_currency @sim.standard_deviation %></td>
+  	<td class="analytics_table_note_short">&nbsp;<%=h number_to_percentage 100 * @sim.standard_deviation / @sim.mean, :precision => 0 %></td>
+  </tr>
+
+  <tr>
+  	<td class="analytics_table_name">Minimum total value</td>
+  	<td class="analytics_table_data"><%= number_to_currency @sim.min %></td>
+  	<td class="analytics_table_note_short">&nbsp;<%=h number_to_percentage 100 * @sim.min / @sim.mean, :precision => 0 %></td>
+  </tr>
+
+	<tr>
+  	<td class="analytics_table_name">Maximum total value</td>
+  	<td class="analytics_table_data"><%= number_to_currency @sim.max %></td>
+  	<td class="analytics_table_note_short">&nbsp;<%=h number_to_percentage 100 * @sim.max / @sim.mean, :precision => 0 %></td>
+  </tr>
+
+	<tr>
+  	<td class="analytics_table_name">50% probability forecast (sample median)</td>
+  	<td class="analytics_table_data"><%=  number_to_currency @sim.median %></td>
+  	<td class="analytics_table_note_short">&nbsp;<%=h number_to_percentage 100 * @sim.median / @sim.mean, :precision => 0 %></td>
+  </tr>
+  
+  <tr>
+  	<td class="analytics_table_name">60% probability forecast</td>
+  	<td class="analytics_table_data"><%= number_to_currency @sim.p_60 %></td>
+  	<td class="analytics_table_note_short">&nbsp;<%=h number_to_percentage 100 * @sim.p_60 / @sim.mean, :precision => 0 %></td>
+  </tr>
+  
+  <tr>
+  	<td class="analytics_table_name">70% probability forecast</td>
+  	<td class="analytics_table_data"><%= number_to_currency @sim.p_70 %></td>
+  	<td class="analytics_table_note_short">&nbsp;<%=h number_to_percentage 100 * @sim.p_70 / @sim.mean, :precision => 0 %></td>
+  </tr>
+  
+  <tr>
+  	<td class="analytics_table_name">80% probability forecast</td>
+  	<td class="analytics_table_data"><%= number_to_currency @sim.p_80 %></td>
+  	<td class="analytics_table_note_short">&nbsp;<%=h number_to_percentage 100 * @sim.p_80 / @sim.mean, :precision => 0 %></td>
+  </tr>
+  
+  <tr>
+  	<td class="analytics_table_name">90% probability forecast</td>
+  	<td class="analytics_table_data"><%= number_to_currency @sim.p_90 %></td>
+  	<td class="analytics_table_note_short">&nbsp;<%=h number_to_percentage 100 * @sim.p_90 / @sim.mean, :precision => 0 %></td>
+  </tr>
+  
+  <!-- spacer_flag makes sure the spacer row is only displayed once -->
+  <% spacer_flag = false %>
+  
+  <% if @sim.p_le_target != nil %>
+    <% if spacer_flag == false
+      spacer_flag = true %>
+      <tr class="row_spacer"><td> </td></tr>
+    <% end %>
+    <tr>
+    	<td class="analytics_table_name">Probability >= target forecast</td>
+    	<td class="analytics_table_data"><%= 1 - @sim.p_le_target %></td>
+    </tr>    
+  <% end %>
+  
+  <% if @sim.p_range != nil %>
+    <% if spacer_flag == false
+      spacer_flag = true %>
+      <tr class="row_spacer"><td> </td></tr>
+    <% end %>
+    <tr>
+    	<td class="analytics_table_name">Probability in min/max range</td>
+    	<td class="analytics_table_data"><%= @sim.p_range %></td>
+    </tr>    
+  <% end %>
+  
+  <% if @sim.p_ge_min != nil %>
+    <% if spacer_flag == false
+      spacer_flag = true %>
+      <tr class="row_spacer"><td> </td></tr>
+    <% end %>
+    <tr>
+    	<td class="analytics_table_name">Probability >= min</td>
+    	<td class="analytics_table_data"><%= @sim.p_ge_min %></td>
+    </tr>    
+  <% end %>
+  
+  <% if @sim.p_le_max != nil %>
+    <% if spacer_flag == false
+      spacer_flag = true %>
+      <tr class="row_spacer"><td> </td></tr>
+    <% end %>
+    <tr>
+    	<td class="analytics_table_name">Probability =< max</td>
+    	<td class="analytics_table_data"><%= @sim.p_le_max %></td>
+    </tr>    
+  <% end %>
+  
+</table>
+
+<p>
+	<%= link_to 'Simulate again', :controller => 'analytics', :action => 'simulate_parameters' %>&nbsp;|
+	<%= link_to 'View probability functions', :controller => 'analytics', :action => 'chart_pdf_cdf', :vis => @pf_vis %>
+</p>
+
+<% end %>

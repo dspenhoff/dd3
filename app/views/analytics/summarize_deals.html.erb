@@ -1,0 +1,58 @@
+<div id="selector">
+	<br /><br />
+	<p>
+		<%= link_to 'View analytics list', :controller => 'analytics', :action => 'index' %> |
+		<%= link_to 'Show deals', :controller => 'deals', :action => 'index' %> |
+	</p>
+</div>
+
+<table>
+  <tr>
+    <th class="analytics_table_header_name">Summary results for <%= @sum.selected_count %> of <%= @deals.length %> deals</th>
+    <th class="analytics_table_header_short">Num</th>
+    <th class="analytics_table_header_data">Unfactored</th>
+    <th class="analytics_table_header_data">Factored</th>
+  </tr>
+
+	<tr>
+  	<td class="analytics_table_name">All deals</td>
+  	<td class="analytics_table_short"><%= @sum.num_deals %></td>
+  	<td class="analytics_table_data"><%=  number_to_currency @sum.mode, :precision => 0 %></td>
+  	<td class="analytics_table_data"><%=  number_to_currency @sum.f_mode, :precision => 0 %></td>
+  </tr>
+	<tr>
+  	<td class="analytics_table_name">Pipeline</td>
+  	<td class="analytics_table_short"><%= @sum.num_pipeline %></td>
+  	<td class="analytics_table_data"><%=  number_to_currency @sum.pipeline, :precision => 0 %></td>
+  	<td class="analytics_table_data"><%=  number_to_currency @sum.f_pipeline, :precision => 0 %></td>
+  </tr>
+  <tr>
+  	<td class="analytics_table_name">Forecast</td>
+  	<td class="analytics_table_short"><%= @sum.num_forecast %></td>
+  	<td class="analytics_table_data"><%= number_to_currency @sum.forecast, :precision => 0 %></td>
+  	<td class="analytics_table_data"><%= number_to_currency @sum.f_forecast, :precision => 0 %></td>
+  </tr>
+  <% if @show_predicted %>
+	<tr>
+  	<td class="analytics_table_name">Predicted</td>
+  	<td class="analytics_table_short"></td>
+  	<td class="analytics_table_data"><%= number_to_currency @sum.predicted, :precision => 0 %></td>
+  	<td class="analytics_table_data"></td>
+  </tr>
+	<% end %>
+  <tr>
+  	<td class="analytics_table_name">Coverage</td>
+  	<td class=""><%=  %></td>
+  	<td class="analytics_table_data"><%= number_to_percentage 100 * @sum.coverage, :precision => 0 %></td>
+  	<td class="analytics_table_data"><%= number_to_percentage 100 * @sum.f_coverage, :precision => 0 %></td>
+  </tr>
+</table>
+
+<div class="notes">
+  <p>Notes:</p>
+  <ul>
+    <li>Unfactored means deal win probabilities <em><strong>are not</strong></em> applied to the totals.</li>
+    <li>Factored means deal win probabilities <em><strong>are</strong></em> applied to the totals.</li>
+    <!-- <li>Simulated means the results are based on a basic simulation of the deals using default parameters. Simulation parameters can be varied by choosing the Simulate option under analytics.</li> -->
+  </ul>
+</div>

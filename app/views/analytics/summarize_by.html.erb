@@ -1,0 +1,76 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<!--
+input data:
+@source is "rep" or "region" to indicate a rep or region summary
+@source_all is Rep.all or Region.all
+@summary_all is an array of summary objects for reps or regions
+-->
+
+<div id="selector">
+	<p id="notice_green"><%= flash[:notice] %>&nbsp;</p>
+  <p>Summarize deals by <%= @source %>
+	<p>
+		<%= link_to 'View analytics list', :controller => 'analytics', :action => 'index' %> |
+		<%= link_to 'Show deals', :controller => 'deals', :action => 'index' %> |
+	</p>
+</div>
+<br />
+<table>
+  <tr class="list_table_heading">
+    <th class="list_table_name"><%= @source.humanize %></th>
+    <th class="list_table_number">Num deals</th>
+    <th class="list_table_number">Num<br />pipeline</th>
+    <th class="list_table_number">Num<br />forecast</th>
+		<th class="list_table_amount">All open</th>
+		<th class="list_table_amount">Pipeline</th>
+ 		<th class="list_table_amount">Forecast</th>
+    <th class="list_table_action">Actions</th>
+  </tr>
+  
+  <% 
+    @summaries.length.times do |i| 
+      sum = @summaries[i]
+      source = @sources[i]
+  %>  
+  
+  <!-- table has a row for each source object summary -->
+  <tr class="<%= cycle('list_table_row_even', 'list_table_row_odd') %>">
+    <td class="list_table_name"><%= source.name %></td>
+    <td class="list_table_number"><%= sum.num_deals %></td>
+    <td class="list_table_number"><%= sum.num_pipeline %></td>
+    <td class="list_table_number"><%= sum.num_forecast %></td>
+		<td class="list_table_amount"><%= number_to_currency sum.all_open, :precision => 0 %></td>
+		<td class="list_table_amount"><%= number_to_currency sum.pipeline, :precision => 0 %></td>
+		<td class="list_table_amount"><%= number_to_currency sum.forecast, :precision => 0 %></td>
+		<td class="region_action_links">
+			<% if @source == "region" %>
+    		<%= link_to 'Show reps', :controller => @source + 's', :action => 'show_associated_reps', :id => source.id %>
+			<% end %>
+			<%= link_to 'Show deals', :controller => @source + 's', :action => 'show_associated_deals', :id => source.id %>
+			<%= link_to 'Summarize this ' + @source, :controller => 'analytics', :action => 'summarize_this_' + @source, :id => source.id %>
+  	</td>
+	</td>
+  </tr>
+  
+<% end %>
+<tr>
+  <!-- skip the first 1 columns -->
+  <td colspan="1"></td>
+  <td class="list_table_footing_number"><%=h source_total_num_deals(@sources) %></td>
+  <td class="list_table_footing_number"><%=h source_total_num_pipelines(@sources) %></td>
+  <td class="list_table_footing_number"><%=h source_total_num_forecasts(@sources) %></td>
+  <td class="list_table_footing_amount"><%=h number_to_currency source_total_open_deals(@sources), :precision => 0 %></td>
+  <td class="list_table_footing_amount"><%=h number_to_currency source_total_pipelines(@sources), :precision => 0 %></td>
+  <td class="list_table_footing_amount"><%=h number_to_currency source_total_forecasts(@sources), :precision => 0 %></td>
+</tr>  
+</table>
+
+<div class="notes">
+  <p>Notes:</p>
+  <ul>
+    <li>Unfactored means deal win probabilities <em><strong>are not</strong></em> applied to the totals.</li>
+    <li>Factored means deal win probabilities <em><strong>are</strong></em> applied to the totals.</li>
+    <li>Simulated means the results are based on a basic simulation of the deals using default parameters. Simulation parameters can be varied by choosing the Simulate option under analytics.</li>
+  </ul>
+</div>

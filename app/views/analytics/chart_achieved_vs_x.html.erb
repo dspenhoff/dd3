@@ -1,0 +1,34 @@
+<!-- Copyright © by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<p id="notice_red"><%= flash[:notice] %>&nbsp;</p>
+	<h3>Scope = <%= @scope %> <% if @theta != nil %>, theta = <%= @theta %>&deg;<% end %></h3>
+	<% form_tag_url = url_for(:controller => 'analytics', :action => 'chart_achieved_vs_x', :avx_type => @avx_type) %>  
+	<% form_tag form_tag_url do %>
+	<p>	
+	  <!-- make the filter_by radio button list, checking the button in @filter_by -->
+		Filter by:
+		<% ['show_all', 'show_region', 'show_rep'].each do |filter_avx_by| %>
+		  &nbsp;<%= radio_button_tag 'filter_avx_by', filter_avx_by, @filter_avx_by == filter_avx_by %><%= filter_avx_by.humanize %>
+		  <% if filter_avx_by == 'show_region' %>
+        &nbsp;<%= collection_select :region_select, :id, @regions, :id, :name, :prompt => 'Select a region' %>  
+      <% elsif filter_avx_by == 'show_rep' %>
+  		  &nbsp;<%= collection_select :rep_select, :id, @reps, :id, :name, :prompt => 'Select a rep' %>
+		  <% end %>
+		<% end %>
+    &nbsp;Aggregate histories? <%= check_box_tag :aggregate_histories, 1, @aggregate_histories_checked %>
+  	
+	</p>
+	<p>
+	  <%= submit_tag "Filter" %>
+  	<%= link_to 'View analytics functions list', :controller => 'analytics', :action => 'index' %>
+  <% end %>
+	</p>
+	<p></p>
+</div>
+
+<br /><br /><br />
+
+<div id="chart">
+  <%= image_tag @avx_vis %>
+</div>
