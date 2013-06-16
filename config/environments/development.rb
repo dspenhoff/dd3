@@ -33,5 +33,6 @@ Dd3::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+  # 6/16 changed from true to false to fix duplicate confirm dialogs
+  config.assets.debug = false
 end

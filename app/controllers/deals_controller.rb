@@ -26,7 +26,6 @@ class DealsController < ApplicationController
   # GET /deals/1
   # GET /deals/1.xml
   def show
-    debugger
     @deal = Deal.find(params[:id])
     @page_title = "Deals > Show"
   end
