@@ -26,6 +26,7 @@ class DealsController < ApplicationController
   # GET /deals/1
   # GET /deals/1.xml
   def show
+    debugger
     @deal = Deal.find(params[:id])
     @page_title = "Deals > Show"
   end
@@ -53,16 +54,14 @@ class DealsController < ApplicationController
   def create
     @deal = Deal.new(params[:deal], :without_protection => true)
     @deal.apply_rules
-    respond_to do |format|
-      if @deal.save
-        flash[:notice] = 'Deal was successfully created.'
-        redirect_to(@deal)
-      else
-        @reps = Rep.all
-        @stages = sfdc_stages.collect{ |s| [s[:stage].to_s, s[:stage].to_s] }
-        @page_title = "Deals > New"
-        render :action => "new" 
-      end
+    if @deal.save
+      flash[:notice] = 'Deal was successfully created.'
+      redirect_to(@deal)
+    else
+      @reps = Rep.all
+      @stages = sfdc_stages.collect{ |s| [s[:stage].to_s, s[:stage].to_s] }
+      @page_title = "Deals > New"
+      render :action => "new" 
     end
   end
 
@@ -70,16 +69,14 @@ class DealsController < ApplicationController
   # PUT /deals/1.xml
   def update
     @deal = Deal.find(params[:id])
-    respond_to do |format|
-      if @deal.update_attributes(params[:deal], :without_protection => true)
-        @deal.apply_rules
-        if @deal.save
-          flash[:notice] = 'Deal was successfully updated.'
-          redirect_to(@deal)
-        end
-      else
-        render :action => "edit"
+    if @deal.update_attributes(params[:deal], :without_protection => true)
+      @deal.apply_rules
+      if @deal.save
+        flash[:notice] = 'Deal was successfully updated.'
+        redirect_to(@deal)
       end
+    else
+      render :action => 'edit'
     end
   end
 
