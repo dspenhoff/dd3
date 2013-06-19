@@ -5,6 +5,8 @@ gem 'rails', '3.2.13'
 
 gem 'heroku'
 
+gem 'dynamic_form'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

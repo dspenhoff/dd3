@@ -1,4 +1,4 @@
-# Copyright © by David M. Spenhoff. All rights reserved
+# Copyright (c) by David M. Spenhoff. All rights reserved
 
 include SharedMethods
 
