@@ -57,8 +57,15 @@ class RepsController < ApplicationController
 
   # DELETE /reps/1
   def destroy
+    # confirm that the rep is empty (no deals) before deleting
     @rep = Rep.find(params[:id])
-    @rep.destroy
+    if @rep.deals == []   # if rep is empty it can be deleted
+      @rep.destroy
+      destroy_notice = "Region was successfully deleted"      
+    else
+      destroy_notice = "Region has assigned reps or deals and cannot be deleted"
+    end
+    flash[:notice] = destroy_notice
     redirect_to(reps_url)
   end
   

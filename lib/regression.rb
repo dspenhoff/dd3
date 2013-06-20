@@ -24,7 +24,7 @@ class Regression
     # note: all data external (provided or returned) to this class are regular ruby
     # arrays or scalers; internally these are converted to Matrix and Vector objects
 
-    puts "+++++ regression - lr"
+    #puts "+++++ regression - lr"
     if intercept then x.collect! { |e| e.insert(0, 1.0) } end
     xm = Matrix.rows(x)
     yv = Vector.elements(y)

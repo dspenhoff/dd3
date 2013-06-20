@@ -34,7 +34,7 @@ class RegionsController < ApplicationController
   def create
     @region = Region.new(params[:region], :without_protection => true)
     if @region.save
-      flash[:notice] = 'Region was successfully created.'
+      flash[:notice] = 'Region was successfully created'
       redirect_to(@region)
     else
       render :action => "new" 
@@ -45,7 +45,7 @@ class RegionsController < ApplicationController
   def update
     @region = Region.find(params[:id])
     if @region.update_attributes(params[:region], :without_protection => true)
-      flash[:notice] = 'Region was successfully updated.'
+      flash[:notice] = 'Region was successfully updated'
       redirect_to(@region) 
     else
       render :action => "edit" 
@@ -54,8 +54,15 @@ class RegionsController < ApplicationController
 
   # DELETE /regions/1
   def destroy
+    # confirm that the region is empty (no reps -> no deals) defore deleting
     @region = Region.find(params[:id])
-    @region.destroy
+    if @region.reps == []   # if region is empty it can be deleted
+      @region.destroy
+      destroy_notice = "Rep was successfully deleted"      
+    else
+      destroy_notice = "Rep has assigned reps deals and cannot be deleted"
+    end
+    flash[:notice] = destroy_notice
     redirect_to(regions_url)
   end
   
