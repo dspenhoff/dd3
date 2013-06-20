@@ -1,4 +1,4 @@
 # Copyright (c) by David M. Spenhoff. All rights reserved
 
-class Customer < ActiveRecord::Base
+class Scenario < ActiveRecord::Base
 end

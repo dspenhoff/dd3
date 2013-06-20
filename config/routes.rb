@@ -53,6 +53,9 @@ Dd3::Application.routes.draw do
     
   # routes for customers
   resources :customers
+  
+  # routes for scenarios
+  resources :scenarios
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
