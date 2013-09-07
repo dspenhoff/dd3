@@ -15,8 +15,10 @@ menubar_red.gif: menubar_red-60d37063936320ec83aa24c21016e80c.gif
 menubar_red/index.gif: menubar_red-60d37063936320ec83aa24c21016e80c.gif
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.js: application-66ac45f4175f7564d107dd9489a999bf.js
-application/index.js: application-66ac45f4175f7564d107dd9489a999bf.js
+stoneduck.jpg: stoneduck-85c7c8265c6646b9845f0c0017fa4fbe.jpg
+stoneduck/index.jpg: stoneduck-85c7c8265c6646b9845f0c0017fa4fbe.jpg
+application.js: application-841b378e43b058f74339792acaaa90b3.js
+application/index.js: application-841b378e43b058f74339792acaaa90b3.js
 application.css: application-b37374b83409ed5b58fee3604986685f.css
 application/index.css: application-b37374b83409ed5b58fee3604986685f.css
 jquery.min.map: jquery.min-1c0cf7b6a3425fbd9a3bfccab0a99a4e.map
