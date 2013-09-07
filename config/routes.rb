@@ -1,5 +1,10 @@
 Dd3::Application.routes.draw do
 
+  # routes for the dealduck site controller (static/non-application pages)
+  get "site/duckhome"
+  get "site/duckinfo"
+  get "site/ducksignin"
+
   #routes for deals
   resources :deals do
    collection do

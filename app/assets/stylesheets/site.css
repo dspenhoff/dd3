@@ -1,0 +1,55 @@
+
+body {
+	font:1.0em/2.0em helvetica, arial, tahoma, sans-serif;
+	background:#ffffff; color:#221100; 
+}
+
+#stoneduck {
+  float:left;
+  margin:0 20px 20px 0;
+  width:150px; height:180px;
+  background:url('stoneduck.jpg');
+}
+ 
+#top {
+  margin-left:auto; margin-right:auto;
+  margin-bottom:50px;
+  padding:25px 40px; 
+  background:#ffffff; color:#000000;
+  width:750px;
+  border-radius:8px;
+}
+#top h1, h2, h3, p { 
+  text-align:justify;
+}
+
+#sign-in, #more-info, #submit {
+  text-align:center;
+  padding:10px;
+  background:#3b5998; color:#ffffff;
+  width:150px;
+  border-radius:5px;
+}
+#sign-in {
+  clear:all;
+  float:right;
+  margin-right:150px;  
+}
+#more-info {
+  float:left;
+  margin-left:150px;  
+}
+#submit {
+  clear:all;
+  margin-left:auto; margin-right:auto;
+}
+#sign-in a, #more-info a, #submit a { color:#ffffff; text-decoration:none; }
+
+#textbox {
+  padding:10px;
+  width:275px;
+  background:#eeeeee;
+  border-style:none;
+  border-width:1px;
+  border-radius:5px;
+}
