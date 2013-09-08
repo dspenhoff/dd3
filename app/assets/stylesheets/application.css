@@ -63,7 +63,8 @@ ul { list-style-type:square; }
   top:0; left:0;
   margin:0;
   z-index:1;
-  height:85px; width:910px; 
+  height:85px; 
+  width:910px; 
   /*background-color:#314159;
   border-left:10px solid #333333;
   border-top:2px solid #333333;
@@ -223,14 +224,15 @@ ul { list-style-type:square; }
 }
 
 .plaintext {
-   padding-top:20px;
-   padding-left:10px;
-   width:600px;
+  margin-top:20px;
+  padding-top:20px;
+  padding-left:10px;
+  width:600px;
 }
 
 hr {
-   color:#3b5998;
-   background-color:#bcd2ee;
+  color:#3b5998;
+  background-color:#bcd2ee;
 }
 
 /* styles for the chart div */

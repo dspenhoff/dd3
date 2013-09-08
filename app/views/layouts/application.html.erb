@@ -16,14 +16,14 @@
 <div id="header">
   <!-- title starts here -->
 	<div id="title">
-		<h1>Dealduck: Sales Forecast+Risk Analytics</h1>
+		<h1><%= image_tag 'stoneduck.jpg', :size => '40x48', :alt => 'stoneduck' %>&nbsp;Dealduck &mdash; Sales Forecast+Risk Analytics</h1>
 	</div>
 	<!-- title ends here -->
 	
 	<!-- menu starts here -->
 	<div id="menu">
 	  <ul> 
-  		<li><%= link_to 'Home', root_path %></li>
+  		<li><%= link_to 'Home', home_index_path %></li>
   		<li><%= link_to 'Deals', deals_path %></li>
   		<li><%= link_to 'Reps', reps_path %></li>
   		<li><%= link_to 'Regions', regions_path %></li>
