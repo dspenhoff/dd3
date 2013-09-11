@@ -8,13 +8,14 @@
 <body>
 
 <div id="top">
-  <div id="stoneduck"><%= image_tag 'stoneduck.jpg', :size => '150x180', :alt => 'stoneduck' %></div>
-  <h1>A "duck" is a small stack of stones marking a hard to find trail</h1>
-  <h3>Dealduck lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h2>
+  <div id="duck-logo"><%= image_tag 'duck-logo.png', :size => '150x150', :alt => 'duck-logo' %></div>
+  <p style="font-size:2.0em; line-height:1.3em;">A <span class="duck-span">duck</span> is a small stack of stones marking a hard to find trail</p>
+  <p style="font-size:1.25em">Deal<span class="duck-span">duck</span> lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     
+    </br>
     <div id="more-info"><%= link_to 'Get more info', :controller => 'site', :action => 'duckinfo' %></div>
     <div id="sign-in"><%= link_to 'Users sign in', :controller => 'site', :action => 'ducksignin' %></div>
-
+    </br>
 </div>
 
 <div style="margin-left:auto; margin-right:auto; width:750px; ">
@@ -32,6 +33,14 @@
         <strong>Lorem ipsum dolor sit amet</strong></br>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
       <td>
   </table>
+  </br>
+</div>
+
+<div id="bottom" style="width:750; margin-left:auto; margin-right:auto;">
+  <div style="copyright">
+    <p>Copyright &copy; David Spenhoff. All rights reserved.</p>
+  </div>
+  
 </div>
 
 </body>

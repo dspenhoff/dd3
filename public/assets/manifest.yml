@@ -1,6 +1,8 @@
 ---
 Untitled-1.psd: Untitled-1-15c27d212a96f3f81535d2f1ac145d74.psd
 Untitled-1/index.psd: Untitled-1-15c27d212a96f3f81535d2f1ac145d74.psd
+duck-logo.png: duck-logo-c1c815c4f409a7b9b9833974589a3df0.png
+duck-logo/index.png: duck-logo-c1c815c4f409a7b9b9833974589a3df0.png
 header_image.gif: header_image-fb0f66e69c33be898f97ef48a479da26.gif
 header_image/index.gif: header_image-fb0f66e69c33be898f97ef48a479da26.gif
 menu-back.gif: menu-back-9bf7947445a66ffd79c294e0694cb269.gif
@@ -15,13 +17,13 @@ menubar_red.gif: menubar_red-60d37063936320ec83aa24c21016e80c.gif
 menubar_red/index.gif: menubar_red-60d37063936320ec83aa24c21016e80c.gif
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-stoneduck.jpg: stoneduck-85c7c8265c6646b9845f0c0017fa4fbe.jpg
-stoneduck/index.jpg: stoneduck-85c7c8265c6646b9845f0c0017fa4fbe.jpg
+tweed-bg.png: tweed-bg-6a172f61e1c8ed9ea2279e2c149a0d25.png
+tweed-bg/index.png: tweed-bg-6a172f61e1c8ed9ea2279e2c149a0d25.png
 application.js: application-841b378e43b058f74339792acaaa90b3.js
 application/index.js: application-841b378e43b058f74339792acaaa90b3.js
 application.css: application-30d807f6d3ab9edfc47a6e63b4d57097.css
 application/index.css: application-30d807f6d3ab9edfc47a6e63b4d57097.css
-site.css: site-e384c6053702238b88d65b4af8e9bcd9.css
-site/index.css: site-e384c6053702238b88d65b4af8e9bcd9.css
+site.css: site-40427ae7dee62527acaa6d652fdbf960.css
+site/index.css: site-40427ae7dee62527acaa6d652fdbf960.css
 jquery.min.map: jquery.min-1c0cf7b6a3425fbd9a3bfccab0a99a4e.map
 jquery/index.min.map: jquery.min-1c0cf7b6a3425fbd9a3bfccab0a99a4e.map
