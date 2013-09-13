@@ -1,4 +1,6 @@
 ---
+IMG_0731.jpg: IMG_0731-6cc8d84ba214bb44555471d84c620754.jpg
+IMG_0731/index.jpg: IMG_0731-6cc8d84ba214bb44555471d84c620754.jpg
 Untitled-1.psd: Untitled-1-15c27d212a96f3f81535d2f1ac145d74.psd
 Untitled-1/index.psd: Untitled-1-15c27d212a96f3f81535d2f1ac145d74.psd
 duck-logo.png: duck-logo-c1c815c4f409a7b9b9833974589a3df0.png
@@ -21,9 +23,9 @@ tweed-bg.png: tweed-bg-6a172f61e1c8ed9ea2279e2c149a0d25.png
 tweed-bg/index.png: tweed-bg-6a172f61e1c8ed9ea2279e2c149a0d25.png
 application.js: application-841b378e43b058f74339792acaaa90b3.js
 application/index.js: application-841b378e43b058f74339792acaaa90b3.js
-application.css: application-30d807f6d3ab9edfc47a6e63b4d57097.css
-application/index.css: application-30d807f6d3ab9edfc47a6e63b4d57097.css
-site.css: site-40427ae7dee62527acaa6d652fdbf960.css
-site/index.css: site-40427ae7dee62527acaa6d652fdbf960.css
+application.css: application-76ec096433fff58c6a7521e31abf74ee.css
+application/index.css: application-76ec096433fff58c6a7521e31abf74ee.css
+site.css: site-16890121a11648139f901804df109edc.css
+site/index.css: site-16890121a11648139f901804df109edc.css
 jquery.min.map: jquery.min-1c0cf7b6a3425fbd9a3bfccab0a99a4e.map
 jquery/index.min.map: jquery.min-1c0cf7b6a3425fbd9a3bfccab0a99a4e.map
