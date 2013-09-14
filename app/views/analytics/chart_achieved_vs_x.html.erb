@@ -1,6 +1,7 @@
 <!-- Copyright © by David M. Spenhoff. All rights reserved -->
 
 <div id="selector">
+  <br />
 	<p id="notice_red"><%= flash[:notice] %>&nbsp;</p>
 	<h3>Scope = <%= @scope %> <% if @theta != nil %>, theta = <%= @theta %>&deg;<% end %></h3>
 	<% form_tag_url = url_for(:controller => 'analytics', :action => 'chart_achieved_vs_x', :avx_type => @avx_type) %>  
