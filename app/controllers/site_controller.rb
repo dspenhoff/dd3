@@ -1,4 +1,4 @@
-# controller for 'static' web pages that comprise the site vs. application 
+# controller for 'static' web pages that comprise the site vs. the application 
 
 class SiteController < ApplicationController
   def index

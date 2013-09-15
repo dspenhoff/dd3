@@ -10,10 +10,6 @@ Dd3::Application.routes.draw do
     end
   end
   
-  #get "site/duckhome"
-  #get "site/duckinfo"
-  #get "site/ducksignin"
-
   #routes for deals
   resources :deals do
    collection do
