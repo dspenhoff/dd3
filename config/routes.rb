@@ -3,9 +3,10 @@ Dd3::Application.routes.draw do
   # routes for the dealduck site controller (static/non-application pages)
   resources :site do
     collection do
-      get 'duckhome'
-      get 'duckinfo'
-      get 'ducksignin'
+      get 'index'
+      get 'info'
+      get 'signin'
+      get 'privacy'
     end
   end
   
@@ -123,7 +124,7 @@ Dd3::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-  root :to => 'site#duckhome'
+  root :to => 'site#index'
 
   # See how all your routes lay out with "rake routes"
 

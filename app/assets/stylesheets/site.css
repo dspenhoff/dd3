@@ -52,6 +52,22 @@ body {
   border-width:1px;
   border-radius:5px;
 }
+#textbox headline {
+  /*font-style:bold;*/
+  color:#f07820;
+}
+#textbox ul{
+  list-style-type:square;  
+  font-size:.9em;
+  line-height:1.0em;
+  margin:0;
+  padding:12px;
+}
+#textbox li {
+ padding-bottom:5px;
+ color:#f07820;  
+}
+#textbox span { color:#1f1f1f; }
 
 #bottom {
   width:750px; height:200px;

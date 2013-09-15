@@ -1,13 +1,20 @@
+# controller for 'static' web pages that comprise the site vs. application 
+
 class SiteController < ApplicationController
-  def duckhome
+  def index
     render :layout => false
   end
 
-  def duckinfo
+  def info
     render :layout => false
   end
 
-  def ducksignin
+  def signin
     render :layout => false
   end
+  
+  def privacy
+    render :layout => false
+  end 
+     
 end

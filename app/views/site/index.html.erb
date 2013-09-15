@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+<%= stylesheet_link_tag 'site' %>
+
+</head>
+<body>
+
+<div id="top">
+  <div id="duck-logo"><%= image_tag 'duck-logo.png', :size => '150x150', :alt => 'duck-logo' %></div>
+  <p style="font-size:3.0em; line-height:.75em;">Deal<span class="duck-span">duck</span></br><span style="font-size:.7em; color:#d0baa0;">Sales Forecast+Risk Analytics</span></p>
+  
+  <p>Why a duck?</p>
+  <p>A "duck" is a small stack of stones guiding hikers on a hard to find trail. Like a trail duck, Deal<span class="duck-span">duck</span> Sales Forecast+Risk Analytics guides sales executives to make better forecasts, with less risk of missing.</p>
+  <p>Sales executives are good at understanding and managing the uncertainties and risks of individual deals. However, when a sales pipeline includes dozens or hundreds of deals it is nearly impossible to quantify and manage the total risk of meeting or missing a forecast.</p><p>Until now. </p>
+  <p>Deal<span class="duck-span">duck</span> performs in-depth analysis and gives valuable insights about the total risk in a forecast by looking at all deals in the sales pipeline.
+  <p>How good is your forecast? Wouldn't you want to know?</p>
+
+  
+    <br />
+    <div id="more-info"><%= link_to 'Get more info', :controller => 'site', :action => 'info' %></div>
+    <div id="sign-in"><%= link_to 'Users sign in', :controller => 'site', :action => 'signin' %></div>
+    <br />
+</div>
+
+<div style="margin-left:auto; margin-right:auto; width:750px; ">
+  <table style="margin-top:10px; ">
+    <tr>
+      <td id="textbox">
+        <headline>Evaluate the <span style="text-decoration:underline; color:#f07820;">total risk</span></headline></br>
+          <ul>
+            <li><span>Consectetur adipisicing elit</span></li>
+            <li><span>Sed do eiusmod tempor incididunt ut labore</span></li>
+            <li><span>Dolore magna aliqua</span></li>
+            <li><span>Ut enim ad minim veniam</span></li>
+          </ul>
+      </td>
+      <td style="width:20px;"></td>
+      <td id="textbox">
+        <headline>Test alternate risk scenarios</headline></br>
+        <ul>
+          <li><span>Consectetur adipisicing elit</span></li>
+          <li><span>Sed do eiusmod tempor incididunt ut labore</span></li>
+          <li><span>Dolore magna aliqua</span></li>
+          <li><span>Ut enim ad minim veniam</span></li>
+        </ul>
+      </td>
+      <td style="width:20px;"></td>
+      <td id="textbox">
+        <headline>Manage "revenue at risk"</headline></br>
+        <ul>
+          <li><span>Consectetur adipisicing elit</span></li>
+          <li><span>Sed do eiusmod tempor incididunt ut labore</span></li>
+          <li><span>Dolore magna aliqua</span></li>
+          <li><span>Ut enim ad minim veniam</span></li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+  <br />
+</div>
+
+<div id="bottom" style="width:750; margin-left:auto; margin-right:auto;">
+  <div style="copyright">
+    <p>Copyright &copy; David Spenhoff. All rights reserved.</p>
+  </div>
+  
+</div>
+
+</body>
+</html>
