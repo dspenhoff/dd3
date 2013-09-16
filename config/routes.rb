@@ -7,6 +7,9 @@ Dd3::Application.routes.draw do
       get 'info'
       get 'signin'
       get 'privacy'
+      get 'blog'
+      get 'faq'
+      get 'about'
     end
   end
   

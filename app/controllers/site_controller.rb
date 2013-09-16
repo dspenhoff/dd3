@@ -2,19 +2,24 @@
 
 class SiteController < ApplicationController
   def index
-    render :layout => false
   end
 
   def info
-    render :layout => false
   end
 
   def signin
-    render :layout => false
   end
   
   def privacy
-    render :layout => false
   end 
+  
+  def faq
+  end
+  
+  def blog
+  end
+  
+  def about
+  end
      
 end

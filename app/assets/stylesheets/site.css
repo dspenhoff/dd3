@@ -5,22 +5,22 @@ body {
 	background:url('tweed-bg.png'); 
 }
 
+a { color:#d0d040; }
+
 .duck-span { color:#f07820; font-style:italic; }
+
+#menu-links { float:right; }
 
 #duck-logo {
   float:left;
   margin:0 20px 0 0;
   padding-top:20px;
-  width:150px; height:130px;
 }
  
-#top {
-  margin-left:auto; margin-right:auto;
-  margin-bottom:50px;
-  padding:25px 40px; 
-  width:750px;
-}
-#top p { text-align:justify; font-size:1.1em; line-height:1.35em; }
+#header, #content { margin-left:auto; margin-right:auto; width:750px; }
+#header { padding-top:25px;}
+#content { margin-bottom:50px; padding: 0 40px;}
+#header p, #content p { text-align:justify; font-size:1.1em; line-height:1.35em; }
 
 #sign-in, #more-info, #submit {
   text-align:center;
@@ -69,15 +69,10 @@ body {
 }
 #textbox span { color:#1f1f1f; }
 
-#bottom {
-  width:750px; height:200px;
+#footer {
+  width:750px; 
   margin-left:auto; margin-right:auto;
   padding:5px 5px 5px 5px;
-  background:#404040; color:#f3f3f3;
   font-size:.6em;
 }
 
-#copyright {
-  clear:all;
-  float:bottom;
-}

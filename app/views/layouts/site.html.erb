@@ -1,0 +1,39 @@
+<!-- Copyright (c) David Spenhoff. All rights reserved. -->
+
+<!-- layout for the site/non-application pages -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  
+<%= stylesheet_link_tag 'site' %>
+
+</head>
+<body>
+  
+<div id="header">
+  <div style="float:right;">
+    <%= link_to 'Home', :controller => 'site', :action => 'index' %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to 'About', :controller => 'site', :action => 'about' %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to "FAQ", :controller => 'site', :action => 'faq' %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to 'Contact', :controller => 'site', :action => 'info' %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to 'Sign in', :controller => 'site', :action => 'signin' %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to "Blog", :controller => 'site', :action => 'blog' %>
+  </div>
+  <div id="duck-logo">
+    <%= image_tag 'duck-logo.png', :size => '150x130', :alt => 'duck-logo' %>
+  </div>
+  <p style="font-size:3.0em; line-height:.75em;">
+    Deal<span class="duck-span">duck</span></br>
+    <span style="font-size:.7em; color:#d0baa0;">Sales Forecast+Risk Analytics</span>
+  </p>
+</div>
+
+<%= yield %>
+
+<div id="footer">
+  <p>Copyright &copy; David Spenhoff. All rights reserved. &nbsp;&nbsp;&nbsp; <%= link_to "Privacy Policy", :controller => 'site', :action => 'privacy' %></p>
+</div>
+
+</body>
+</html>
