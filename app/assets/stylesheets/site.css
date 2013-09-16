@@ -5,7 +5,8 @@ body {
 	background:url('tweed-bg.png'); 
 }
 
-a { color:#d0d040; }
+a { color:#64baa0; }
+a:hover { color:#d0d040; }
 
 .duck-span { color:#f07820; font-style:italic; }
 
