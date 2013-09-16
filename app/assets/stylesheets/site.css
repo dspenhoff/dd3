@@ -1,6 +1,6 @@
 
 body {
-	font:1.0em/2.0em helvetica, arial, tahoma, sans-serif;
+	font:1.0em/1.4em helvetica, arial, tahoma, sans-serif;
 	background:#404040; color:#ffffff; 
 	background:url('tweed-bg.png'); 
 }
@@ -8,7 +8,6 @@ body {
 a { color:#64baa0; }
 a:hover { color:#d0d040; }
 
-.duck-span { color:#f07820; font-style:italic; }
 
 #menu-links { float:right; }
 
@@ -20,8 +19,8 @@ a:hover { color:#d0d040; }
  
 #header, #content { margin-left:auto; margin-right:auto; width:750px; }
 #header { padding-top:25px;}
-#content { margin-bottom:50px; padding: 0 40px;}
-#header p, #content p { text-align:justify; font-size:1.1em; line-height:1.35em; }
+#content { margin-bottom:50px; padding: 0 40px; }
+#header p, #content p { text-align:justify; font-size:1.1em; }
 
 #sign-in, #more-info, #submit {
   text-align:center;
@@ -46,6 +45,8 @@ a:hover { color:#d0d040; }
 #sign-in a, #more-info a, #submit a { color:#ffffff; text-decoration:none; }
 
 #textbox {
+  vertical-align:top;
+  color:#1f1f1f;
   padding:10px;
   width:275px;
   background:#f3f3f3; color:#1f1f1f;
@@ -54,21 +55,8 @@ a:hover { color:#d0d040; }
   border-radius:5px;
 }
 #textbox headline {
-  /*font-style:bold;*/
   color:#f07820;
 }
-#textbox ul{
-  list-style-type:square;  
-  font-size:.9em;
-  line-height:1.0em;
-  margin:0;
-  padding:12px;
-}
-#textbox li {
- padding-bottom:5px;
- color:#f07820;  
-}
-#textbox span { color:#1f1f1f; }
 
 #footer {
   width:750px; 
@@ -76,4 +64,7 @@ a:hover { color:#d0d040; }
   padding:5px 5px 5px 5px;
   font-size:.6em;
 }
+
+.duck-span { color:#f07820; font-style:italic; }
+
 
