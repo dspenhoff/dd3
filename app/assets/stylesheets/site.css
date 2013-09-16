@@ -28,6 +28,7 @@ a:hover { color:#d0d040; }
   background:#c87840; 
   width:150px;
   border-radius:5px;
+  box-shadow: -1px 1px 20px #1f1f1f;
 }
 #sign-in {
   clear:all;
@@ -49,10 +50,9 @@ a:hover { color:#d0d040; }
   color:#1f1f1f;
   padding:10px;
   width:275px;
-  background:#f3f3f3; color:#1f1f1f;
-  border-style:none;
-  border-width:1px;
   border-radius:5px;
+  background:#f3f3f3; color:#1f1f1f;
+  box-shadow: -5px 10px 20px #1f1f1f;
 }
 #textbox headline {
   color:#f07820;
