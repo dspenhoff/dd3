@@ -1,5 +1,7 @@
 Dd3::Application.routes.draw do
 
+  get "admin/index"
+
   get "sessions/index"
 
   get "sessions/new"
@@ -77,8 +79,9 @@ Dd3::Application.routes.draw do
   # routes for scenarios
   resources :scenarios
   
-  # resources for users
+  # resources for users, admin
   resources :users
+  resources :admin
   
   # resources for sessions
   resources :sessions do
