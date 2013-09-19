@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       @page_title = "Sign in > Success"
       render :action => 'signin_success'
   	else
-  		flash_now[:notice] = "Sign in error, please try again"
+  		flash.now[:notice] = "Sign in error, please try again"
   		render :action => 'new', :layout => 'site'
   	end
   end
