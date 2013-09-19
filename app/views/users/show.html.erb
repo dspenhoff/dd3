@@ -1,0 +1,43 @@
+<!-- Copyright (c) by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<p id="notice"><%= flash[:notice] %>&nbsp;</p>
+	<br />
+	<p>
+		<%= link_to 'Edit this user', edit_user_path(@user) %> |
+		<%= link_to 'View all users', users_path %>
+	</p>
+</div>
+
+
+<table>
+	<tr>
+  	<td class="view_table_name">First name</td>
+  	<td class="view_table_data"><%=h @user.firstname %></td>
+	</tr>
+
+	<tr>
+  	<td class="view_table_name">Last name</td>
+  	<td class="view_table_data"><%=h @user.lastname %></td>
+	</tr>
+	
+	<tr>
+  	<td class="view_table_name">Organization</td>
+  	<td class="view_table_data"><%=h @user.organization %></td>
+	</tr>
+	
+	<tr>
+  	<td class="view_table_name">Role</td>
+  	<td class="view_table_data"><%=h @user.role %></td>
+	</tr>
+	
+	<tr>
+  	<td class="view_table_name">Username</td>
+  	<td class="view_table_data"><%=h @user.username %></td>
+	</tr>
+
+	<tr>
+  	<td class="view_table_name">Password</td>
+  	<td class="view_table_data"><%=h @user.password %></td>
+	</tr>
+</table>

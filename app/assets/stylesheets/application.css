@@ -71,6 +71,12 @@ ul { list-style-type:square; }
   border-bottom:1px solid #333333;*/
   /*background:url(../images/header_image.gif) no-repeat;*/
 }
+#signin_tag {
+    float:right; 
+    color:#000000;
+    font-size:1.0em;
+    font-weight:bold;
+}
 #title h1 {
    padding-top:10px;
    /*padding-left:5px;*/

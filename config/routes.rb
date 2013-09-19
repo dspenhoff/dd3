@@ -1,5 +1,9 @@
 Dd3::Application.routes.draw do
 
+  get "sessions/index"
+
+  get "sessions/new"
+
   # routes for the dealduck site controller (static/non-application pages)
   resources :site do
     collection do
@@ -72,6 +76,17 @@ Dd3::Application.routes.draw do
   
   # routes for scenarios
   resources :scenarios
+  
+  # resources for users
+  resources :users
+  
+  # resources for sessions
+  resources :sessions do
+    collection do
+      get 'signin_success'
+      get 'signout_success'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

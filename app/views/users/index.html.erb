@@ -1,0 +1,32 @@
+<!-- Copyright (c) by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<p id="notice"><%= flash[:notice] %>&nbsp;</p>
+	<br />
+	<p>
+		<%= link_to 'Create a new user', new_user_path %>
+	</p>
+</div>
+
+<div id="data">	
+	<table>
+		<tr class="list_table_heading">
+			<th class="list_table_title">Username</th>
+			<th class="list_table_action">Actions</th>
+  	</tr>
+
+		<% @users.each do |user| %>
+		<tr class="<%= cycle('list_table_row_even', 'list_table_row_odd') %>">
+    	<td class="list_table_title"><%=h user.username %></td>
+			<td class="action_links">
+				<%= link_to 'View', user %>&nbsp;
+				<%= link_to 'Edit', edit_user_path(user) %>&nbsp;
+				<%= link_to 'Delete', user, :confirm => 'Are you sure?', :method => :delete %>&nbsp;
+			</td>
+  	</tr>
+		<% end %>
+	</table>
+	<% if @users.length == 0 %>
+		<p class="no_records">There are no user records to display</p>	
+	<% end %>
+</div>

@@ -8,7 +8,6 @@ body {
 a { color:#64baa0; }
 a:hover { color:#d0d040; }
 
-
 #menu-links { float:right; }
 
 #duck-logo {
@@ -16,7 +15,8 @@ a:hover { color:#d0d040; }
   margin:0 20px 0 0;
   padding-top:20px;
 }
- 
+
+#notice { color:#d0d040; }
 #header, #content { margin-left:auto; margin-right:auto; width:750px; }
 #header { padding-top:25px;}
 #content { margin-bottom:50px; padding: 0 40px; }
@@ -28,7 +28,7 @@ a:hover { color:#d0d040; }
   background:#c87840; 
   width:150px;
   border-radius:5px;
-  box-shadow: -1px 1px 20px #1f1f1f;
+  /* box-shadow: -1px 1px 20px #1f1f1f; */
 }
 #sign-in {
   clear:all;

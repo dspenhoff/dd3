@@ -3,6 +3,9 @@
 include SharedMethods
 
 class RegionsController < ApplicationController
+  
+  before_filter :login_required
+	
   # GET /regions
   def index
     @regions = Region.all

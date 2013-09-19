@@ -1,0 +1,21 @@
+<!-- Copyright (c) by David M. Spenhoff. All rights reserved -->
+
+<!-- note this view is rendered with the site layout and site css -->
+
+<div id="content">
+	<p id="notice"><%= flash[:notice] %>&nbsp;</p>
+	<h3>Registered users please sign in</h3>
+
+			
+	<%=	form_tag sessions_path do %>
+	<table>
+		<tr><td>Username &nbsp;</td><td><%= text_field_tag 'username' %></td></tr>
+		<tr><td>Password &nbsp;</td><td><%= password_field_tag 'password' %></td></tr>
+	</table>
+	<p><%= submit_tag 'Sign In' %></p>
+	<% end %>
+	
+</div>
+
+ 
+

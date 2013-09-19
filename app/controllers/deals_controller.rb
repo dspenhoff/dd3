@@ -4,6 +4,8 @@ include SharedMethods
 
 class DealsController < ApplicationController
   
+  before_filter :login_required
+  
   # class constants to control the paged display of deals 
   @@page_size = 10 
   @@page_num = 0

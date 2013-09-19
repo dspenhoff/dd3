@@ -8,6 +8,8 @@ require "regression"      # linear regressions
 
 class AnalyticsController < ApplicationController
   
+  before_filter :login_required
+  
   def index
     @page_title = 'Analytics'
   end

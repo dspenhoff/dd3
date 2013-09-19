@@ -4,6 +4,9 @@ include SharedMethods
 require "simulation"			# simulates deals
 
 class RepsController < ApplicationController
+  
+  before_filter :login_required
+	
   # GET /reps
   def index
     @reps = Rep.all

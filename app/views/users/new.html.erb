@@ -1,0 +1,46 @@
+<!-- Copyright (c) by David M. Spenhoff. All rights reserved -->
+
+<div id="selector">
+	<p id="notice"><%= flash[:notice] %>&nbsp;</p>
+	<br />
+	<p>
+		<%= link_to 'Cancel', users_path %>
+	</p>
+</div>    
+
+<%= form_for(@user) do |f| %>
+  <%= f.error_messages %>
+  
+  <table>
+  	<tr>
+  		<td class="view_table_name">First name</td>
+  		<td><%= f.text_field :firstname %></td>
+  	</tr>
+  	<tr>
+  		<td class="view_table_name">Last name</td>
+  		<td><%= f.text_field :lastname %></td>
+  	</tr>
+  	<tr>
+  		<td class="view_table_name">Organization</td>
+  		<td><%= f.text_field :organization %></td>
+  	</tr>
+  	<tr>
+  		<td class="view_table_name">Role</td>
+  		<td><%= f.text_field :role %></td>
+  	</tr>
+  	<tr>
+  		<td class="view_table_name">Username</td>
+  		<td><%= f.text_field :username %></td>
+  	</tr>
+  	<tr>
+  		<td class="view_table_name">Password</td>
+  		<td><%= f.text_field :password %></td>
+  	</tr>  
+
+  </table>
+
+  <p>
+    <%= f.submit 'Create' %>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to 'Cancel', users_path %>
+  </p>
+<% end %>
+
