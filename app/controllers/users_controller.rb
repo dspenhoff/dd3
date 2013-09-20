@@ -64,7 +64,8 @@ class UsersController < ApplicationController
   	# user must be signed in and username must be 'admin'
   	if logged_in?
   		# user is signed in, is user 'admin' 
-  		return true if admin_user.id == @current_user.id
+  		return true
+  		#return true if admin_user.id == @current_user.id
   		flash[:notice] = 'Administration features are not authorized for this user'
   		redirect_to :admin_index and return false
   	end
