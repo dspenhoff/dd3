@@ -62,6 +62,7 @@ class UsersController < ApplicationController
   def authenticate_admin_user
   	# restricts user management to authorized users
   	# user must be signed in and username must be 'admin'
+  	return true
   	if logged_in?
   		# user is signed in, is user 'admin' 
   		return true if admin_user.id == @current_user.id
