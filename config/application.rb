@@ -57,7 +57,7 @@ module Dd3
     config.assets.enabled = true
     
     # Precompile the site.css file (static/non-application pages)
-    config.assets.precompile += ["site.css"]
+    #config.assets.precompile += ["site.css"]
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
