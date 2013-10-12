@@ -25,5 +25,7 @@ application.js: application-30bdbca8a32132976003461e3b69618e.js
 application/index.js: application-30bdbca8a32132976003461e3b69618e.js
 application.css: application-5ffca6a3c45561894853cf10a20a0c62.css
 application/index.css: application-5ffca6a3c45561894853cf10a20a0c62.css
+site.css: site-65d7205669db6f617713115356716139.css
+site/index.css: site-65d7205669db6f617713115356716139.css
 jquery.min.map: jquery.min-1c0cf7b6a3425fbd9a3bfccab0a99a4e.map
 jquery/index.min.map: jquery.min-1c0cf7b6a3425fbd9a3bfccab0a99a4e.map
