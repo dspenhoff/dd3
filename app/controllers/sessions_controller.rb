@@ -7,9 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-
   	@current_user = User.find_by_username_and_password(params[:username], params[:password])
-  	
   	if @current_user
   		session[:user_id] = @current_user.id
       @page_title = "Sign in > Success"
@@ -22,8 +20,8 @@ class SessionsController < ApplicationController
 
   def destroy
   	session[:user_id] = @current_user = nil
-  	#@page_title = "Signed out > Success"
-  	#render :action => 'signout_success'
+  	@page_title = "Signed out > Success"
+  	render 'signout_success'
   end
   
   def index

@@ -5,10 +5,6 @@ Untitled-1.psd: Untitled-1-15c27d212a96f3f81535d2f1ac145d74.psd
 Untitled-1/index.psd: Untitled-1-15c27d212a96f3f81535d2f1ac145d74.psd
 duck-logo.png: duck-logo-c1c815c4f409a7b9b9833974589a3df0.png
 duck-logo/index.png: duck-logo-c1c815c4f409a7b9b9833974589a3df0.png
-fade.png: fade-a6c02cd44945d5773017daa5c077ba49.png
-fade/index.png: fade-a6c02cd44945d5773017daa5c077ba49.png
-fade.tiff: fade-18d5e4ccd5168bba394600d635ba8091.tiff
-fade/index.tiff: fade-18d5e4ccd5168bba394600d635ba8091.tiff
 header_image.gif: header_image-fb0f66e69c33be898f97ef48a479da26.gif
 header_image/index.gif: header_image-fb0f66e69c33be898f97ef48a479da26.gif
 menu-back.gif: menu-back-9bf7947445a66ffd79c294e0694cb269.gif
@@ -21,16 +17,8 @@ menubar_gray.gif: menubar_gray-8a71418000416a6614f118f53212baee.gif
 menubar_gray/index.gif: menubar_gray-8a71418000416a6614f118f53212baee.gif
 menubar_red.gif: menubar_red-60d37063936320ec83aa24c21016e80c.gif
 menubar_red/index.gif: menubar_red-60d37063936320ec83aa24c21016e80c.gif
-metal.png: metal-b8a48d1c45f8b16c9591076f1f1a790e.png
-metal/index.png: metal-b8a48d1c45f8b16c9591076f1f1a790e.png
-metal.tiff: metal-147d63d48cd88b43f6ad1efc9f48f875.tiff
-metal/index.tiff: metal-147d63d48cd88b43f6ad1efc9f48f875.tiff
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-speckeled.png: speckeled-48d62c16c01c402284faf261cdfe004a.png
-speckeled/index.png: speckeled-48d62c16c01c402284faf261cdfe004a.png
-speckeled.tiff: speckeled-8813e9e4552f7de20a4a98bcf904f79e.tiff
-speckeled/index.tiff: speckeled-8813e9e4552f7de20a4a98bcf904f79e.tiff
 tweed-bg.png: tweed-bg-6a172f61e1c8ed9ea2279e2c149a0d25.png
 tweed-bg/index.png: tweed-bg-6a172f61e1c8ed9ea2279e2c149a0d25.png
 application.js: application-30bdbca8a32132976003461e3b69618e.js
