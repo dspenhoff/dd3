@@ -7,6 +7,10 @@ class Simulation
 	def initialize
 	end
 	
+	def quick_simulate(deals)
+	  simulate(deals, 'mode', 'given', 1.0, 1.0, 0.0, 0.0, 0.0)
+  end
+	
   def simulate(deals, objective_mode, probability_mode, factor, value_multiplier, target, min, max)
     
 		start_time = Time.now.to_f		# time the iteration loop

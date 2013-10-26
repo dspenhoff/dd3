@@ -1,0 +1,21 @@
+<h1>Express - Show Deals</h1>
+
+<% if !defined?(@deals).nil? %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Probability</th>
+    <th>Value</th>
+  </tr>
+
+  <% @deals.each do |deal| %>
+  <tr>
+    <td><%=h deal.name %></th>
+    <td><%=h number_to_percentage 100 * deal.probability %></td>
+    <td><%=h number_to_currency deal.most_likely_value %></td>
+  </tr>
+  <% end %>
+  
+<% end %>
+
+</table>

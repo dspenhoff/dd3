@@ -21,7 +21,7 @@ ul { list-style-type:square; }
    float:left;
    margin-left:5px;
    /*margin-top:5px;*/
-   width:905px;
+   width:920px;
    height:32px;
    background:url('menu-back.gif') repeat-x;
 }
@@ -30,7 +30,7 @@ ul { list-style-type:square; }
   padding:0;
   list-style-type: none;
   float:left;
-  width:60em;
+  width:70em;
  
 }
 #menu li {

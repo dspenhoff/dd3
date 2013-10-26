@@ -1,0 +1,13 @@
+<h1>Express - File Upload</h1>
+
+<!-- the flash notice /alert -->
+
+<% if flash[:error] then %>
+<p style="color:#ff0000;"><%= flash[:error] %><p>
+<% end %>
+
+<%= form_tag(upload_file_express_path, multipart: true) do %>
+  <p>Select file : 
+  <%= file_field 'upload', 'datafile' %></p>
+  <%= submit_tag "Upload" %>
+<% end %>

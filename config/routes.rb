@@ -1,11 +1,5 @@
 Dd3::Application.routes.draw do
 
-  get "admin/index"
-
-  get "sessions/index"
-
-  get "sessions/new"
-
   # routes for the dealduck site controller (static/non-application pages)
   resources :site do
     collection do
@@ -73,6 +67,13 @@ Dd3::Application.routes.draw do
     end
   end
     
+  # routes for express (spreadsheet input)
+  resources :express do
+    collection do
+      post 'upload_file'
+    end
+  end
+  
   # routes for customers
   resources :customers
   
@@ -147,5 +148,5 @@ Dd3::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  match ':controller(/:action(/:id))(.:format)'
 end
